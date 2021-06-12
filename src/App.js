@@ -1,15 +1,20 @@
 import "./less/App.less";
-import { Button, DatePicker } from "antd";
 import PosLayout from "./layouts/PosLayout";
-import Home from "./pages/Home";
-import ListProduct from "./components/ListProduct";
+import Home from "./pages/Home/Home";
+import Account from "./pages/Seller/Account";
+import Pos from "./pages/Seller/Pos";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 function App() {
   return (
     <div>
-      <div>app</div>
-      <PosLayout />
-      <Home />
-      <ListProduct />
+      rutas
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/cuenta" component={Account} exact />
+          <Route path="/pos" component={Pos} exact />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
