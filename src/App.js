@@ -1,22 +1,66 @@
 import "./less/App.less";
-import PosLayout from "./layouts/PosLayout";
-import Home from "./pages/Home/Home";
-import Account from "./pages/Seller/Account";
-import Pos from "./pages/Seller/Pos";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Navigation from "./config/Navigation";
+import AuthContext from "./context/AuthContext";
 function App() {
   return (
-    <div>
-      rutas
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/cuenta" component={Account} exact />
-          <Route path="/pos" component={Pos} exact />
-        </Switch>
-      </BrowserRouter>
-    </div>
+    <AuthContext.Provider>
+      <Navigation />
+    </AuthContext.Provider>
   );
 }
 
 export default App;
+
+/*   explicacion sistema de ruteo: 
+
+<Route 
+
+parametros: 
+
+path: string ""
+component: Nodo de componente 
+exact : bolean
+
+
+
+se añaden en ciclo for
+[
+ {
+  
+path:  ""
+component: pagina 
+exact : true
+
+}
+ {
+  
+path:  "/cuenta"
+component: Account 
+exact : true
+
+}
+ {
+  
+path:  "/payment"
+component: pagina 
+exact : true
+
+}
+ {
+  
+path:  ""
+component: pagina 
+exact : true
+
+}
+ {
+  
+path:  ""
+component: pagina 
+exact : true
+
+}
+
+]
+
+*/
