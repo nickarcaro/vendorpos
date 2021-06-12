@@ -10,7 +10,7 @@ const PosLayout = ({ children }) => {
       <Header>
         <MenuTop />
       </Header>
-      <Content style={{ padding: "0 20px", marginTop: 40, minHeight: 280 }}>
+      <Content style={{ padding: "0 20px", marginTop: 10, minHeight: 700 }}>
         {children}
       </Content>
       <Footer />
