@@ -1,11 +1,14 @@
 import "./less/App.less";
 import Navigation from "./config/Navigation";
 import AuthContext from "./context/AuthContext";
+import ExampleContext from "./context/ExampleContext";
 function App() {
   return (
-    <AuthContext.Provider>
-      <Navigation />
-    </AuthContext.Provider>
+    <ExampleContext.Provider value>
+      <AuthContext.Provider>
+        <Navigation />
+      </AuthContext.Provider>
+    </ExampleContext.Provider>
   );
 }
 
