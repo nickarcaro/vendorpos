@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { List, Card } from 'antd';
 import { getProducts } from '../../api/products';
+import { CartContext } from '../../context/CartContext'
 
 const data = [
   {
@@ -37,6 +38,8 @@ const ListProducts = () => {
   const [products, setProducts] = useState([]);
   const [reloadProducts, setReloadProducts] = useState(false);
 
+  const [cart, setCart] = useContext(CartContext)
+
   useEffect(() => {
     (async () => {
       const response = await getProducts();
@@ -46,8 +49,17 @@ const ListProducts = () => {
   }, [reloadProducts, setReloadProducts]);
   console.log(products)
 
-  const clickProduct = (nombre) => {
-    console.log(nombre)
+  const addToCart = (product) => {
+    console.log("antes: ", cart)
+    const newProductList = cart.productList
+    newProductList.push(product)
+    setCart({...cart, productList: newProductList})
+    console.log("despues: ", cart)
+  }
+
+  const clickProduct = (product) => {
+    console.log(product.nombre, "!!")
+    addToCart(product)
   }
 
   return (
@@ -62,9 +74,9 @@ const ListProducts = () => {
         xxl: 6,
       }} // cantidad de calumnas por tamaño de pantalla
       dataSource={products}
-      renderItem={item => (
+      renderItem={product => (
         <List.Item>
-          <Card onClick={() => clickProduct(item.nombre)} title={item.nombre}>{item.precio_actual}</Card>
+          <Card onClick={() => clickProduct(product)} title={product.nombre}>{product.precio_actual}</Card>
         </List.Item>
       )}
     />
