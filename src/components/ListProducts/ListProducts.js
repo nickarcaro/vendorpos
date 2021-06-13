@@ -43,8 +43,12 @@ const ListProducts = () => {
       setProducts(response || []);
       setReloadProducts(false);
     })();
-  }, [reloadProducts, products]);
+  }, [reloadProducts, setReloadProducts]);
   console.log(products)
+
+  const clickProduct = (nombre) => {
+    console.log(nombre)
+  }
 
   return (
     <List
@@ -60,7 +64,7 @@ const ListProducts = () => {
       dataSource={products}
       renderItem={item => (
         <List.Item>
-          <Card title={item.nombre}>{item.precio_actual}</Card>
+          <Card onClick={() => clickProduct(item.nombre)} title={item.nombre}>{item.precio_actual}</Card>
         </List.Item>
       )}
     />
