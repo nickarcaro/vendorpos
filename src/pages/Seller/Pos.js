@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Space } from 'antd';
+import { Row, Col, Space, Button } from 'antd';
 import ListProducts from "../../components/ListProducts"
 import SearchBar from "../../components/SearchBar"
 import ListCart from "../../components/ListCart"
@@ -28,7 +28,8 @@ const Pos = () => {
             <Row gutter={[16,16]}>
               {/* numpad y boton pago */}
               <Col span={24} style={{}}>
-                numpad y boton pago
+                numpad
+                <Button onClick={() => {window.location.replace("/pos/pago")}}>Pago</Button>
               </Col>
             </Row>
         </Col>
