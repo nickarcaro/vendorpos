@@ -9,7 +9,7 @@ import {LeftCircleTwoTone} from "@ant-design/icons"
 
 /*style de padding solo afecta los gutterrow 2 y 3 */
 const style = {padding: '31px 0'};
-const style2 = {floar: 'right'};
+const style2 = {float: 'right'};
 
 const Payment = () => {
   const [cart, setCart] = useContext(CartContext)
@@ -28,8 +28,10 @@ const Payment = () => {
       <Divider >Productos</Divider>
   <List 
     itemLayout="horizontal"
-    footer={<div>Total</div>}
-    footer={<div style = {style2}>Total</div>}
+    footer={<Row>
+      <Col span={12}>Total</Col>
+      <Col span={12} ><div style = {style2}>{cart.total}</div></Col>
+    </Row>}
     dataSource={cart.productList}
     renderItem={item => (
       <List.Item>
