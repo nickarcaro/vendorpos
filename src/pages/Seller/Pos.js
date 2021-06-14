@@ -19,8 +19,18 @@ const Pos = () => {
             {/* <div style={ {background: "#fff"}} >matriz de productos</div> */}
         </Col>
         <Col  span={8} style={{background: "#fff"}}>
-            <div style={ {background: "#fff"}} >carrito, calculadora y pago</div>
-            <ListCart></ListCart>
+            <Row gutter={[16,16]}>
+              {/* carrito */}
+              <Col span={24} style={{}}>
+                <ListCart></ListCart>
+              </Col>
+            </Row>
+            <Row gutter={[16,16]}>
+              {/* numpad y boton pago */}
+              <Col span={24} style={{}}>
+                numpad y boton pago
+              </Col>
+            </Row>
         </Col>
         </Row>
       </CartProvider>
