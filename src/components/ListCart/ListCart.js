@@ -22,11 +22,21 @@ const ListCart = () => {
     <>
       <Button onClick={()=> clearCart()}>Clear Cart</Button>
       <List
-        size="large"
-        footer={<div>Total: </div>}
+        style={{background: "#fff"}}
+        footer={<div>Total: ${cart.total}</div>}
         bordered
         dataSource={cart.productList}
-        renderItem={productObj => <List.Item>{productObj.productName} {productObj.quantity} {productObj.totalPrice}</List.Item>}
+        renderItem={productObj => 
+        <List.Item>
+          <List.Item.Meta
+            /*avatar={<Avatar src="/uploads/perro_729fefb8c4.png" />}*/
+            title={productObj.productName}
+            description={<div>{productObj.quantity} unidades a ${productObj.unitPrice}/unidad   </div>}
+          />
+            <div>${productObj.totalPrice}</div>
+            {console.log(cart)}
+        </List.Item>
+        }
       />
       
     </>

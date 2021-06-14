@@ -18,7 +18,8 @@ const Pos = () => {
           <ListProducts></ListProducts>
             {/* <div style={ {background: "#fff"}} >matriz de productos</div> */}
         </Col>
-        <Col  span={8} style={{background: "#fff"}}>
+        {/* style={{background: "#fff"}} */}
+        <Col  span={8} >
             <Row gutter={[16,16]}>
               {/* carrito */}
               <Col span={24} style={{}}>

@@ -81,7 +81,9 @@ const ListProducts = () => {
         dataSource={products}
         renderItem={product => (
           <List.Item>
-            <Card onClick={() => clickProduct(product)} title={product.nombre}>{product.precio_actual}</Card>
+            <Card onClick={() => clickProduct(product)} title={product.nombre}>
+              ${product.precio_actual}
+            </Card>
           </List.Item>
         )}
       />
