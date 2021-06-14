@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col, Space } from 'antd';
 import ListProducts from "../../components/ListProducts"
 import SearchBar from "../../components/SearchBar"
+import ListCart from "../../components/ListCart"
 
 import { CartProvider } from "../../context/CartContext"
 
@@ -18,7 +19,8 @@ const Pos = () => {
             {/* <div style={ {background: "#fff"}} >matriz de productos</div> */}
         </Col>
         <Col  span={8} style={{background: "#fff"}}>
-            <div style={ {background: "#fff", minHeight: 500}} >carrito, calculadora y pago</div>
+            <div style={ {background: "#fff"}} >carrito, calculadora y pago</div>
+            <ListCart></ListCart>
         </Col>
         </Row>
       </CartProvider>
