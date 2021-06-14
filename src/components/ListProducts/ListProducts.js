@@ -49,18 +49,6 @@ const ListProducts = () => {
     console.log("despues: ", cart)
   }
 
-  const clearCart = () => {
-    console.log( "clearCart.. ")
-    let cleanCart = {
-      productList: [],
-      promotionList: [],
-      total: 0,
-      discount: 0,
-      payment: ""
-    }
-    setCart({...cleanCart})
-  }
-
 
   const clickProduct = (product) => {
     console.log(product.nombre, "!!")
@@ -69,7 +57,6 @@ const ListProducts = () => {
 
   return (
     <>
-      <Button onClick={()=> clearCart()}>Clear Cart</Button>
       <List
         grid={{
           gutter: 16,
