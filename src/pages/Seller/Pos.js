@@ -1,10 +1,13 @@
+import React from 'react'
 import { Row, Col, Space } from 'antd';
 import ListProducts from "../../components/ListProducts"
 import SearchBar from "../../components/SearchBar"
 
 import { CartProvider } from "../../context/CartContext"
 
+
 const Pos = () => {
+
   return (
     <>
       <CartProvider>
