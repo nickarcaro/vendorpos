@@ -11,7 +11,7 @@ const Pos = () => {
 
   return (
     <>
-      <CartProvider>
+      
         <SearchBar></SearchBar>
         <Row gutter={16}>
         <Col  span={16}>
@@ -33,7 +33,7 @@ const Pos = () => {
             </Row>
         </Col>
         </Row>
-      </CartProvider>
+     
     </>
   )
 };

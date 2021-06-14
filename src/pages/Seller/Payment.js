@@ -1,10 +1,10 @@
-import React from "react";
+import React, {useState, useContext, useEffect} from "react";
 import { Row, Col, Divider} from 'antd';
 import {CreditCardFilled } from "@ant-design/icons"
 import {DollarCircleFilled } from "@ant-design/icons"
 import {BankFilled} from "@ant-design/icons"
 import { List, Avatar } from 'antd';
-
+import { CartContext } from "../../context/CartContext";
 const data = [
   {
     title: 'Queso',
@@ -27,11 +27,20 @@ const data = [
     cantidad: 5,
   },
 ];
-const style = { background: '#ffffff', padding: '8px 0' };
+
+
+const style = {padding: '8px 0' };
 
 
 
 const Payment = () => {
+  const [cart, setCart] = useContext(CartContext)
+  useEffect(() => {
+    const data = localStorage.getItem("POS-Almacenes-Cart")
+    if (data) {
+      setCart(JSON.parse(data))
+    }
+  }, [])
   return(
     <div>
       <>
@@ -41,15 +50,16 @@ const Payment = () => {
   <List 
     itemLayout="horizontal"
     
-    dataSource={data}
+    dataSource={cart.productList}
     renderItem={item => (
       <List.Item>
         <List.Item.Meta
-          avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-          title={item.title}
-          description=<div>{item.cantidad} unidades a ${item.cantidad}/unidad   </div>
+          /*avatar={<Avatar src="/uploads/perro_729fefb8c4.png" />}*/
+          title={item.productName}
+          description={<div>{item.quantity} unidades a ${item.unitPrice}/unidad   </div>}
         />
-         <div>{item.value}</div>
+         <div>{item.totalPrice}</div>
+         {console.log(cart)}
       </List.Item>
     )}
   />,
@@ -58,8 +68,7 @@ const Payment = () => {
       <Col className="gutter-row" span={7}>
         <div style={style}>
         <Divider >Medio de pago</Divider>
-        <div style={style}><h3> <DollarCircleFilled /> Efectivo</h3></div>
-        
+        <div style={style}><h3> <DollarCircleFilled /> Efectivo</h3></div>       
         <div style={style}><h3> <CreditCardFilled /> Credito </h3></div>
         <div style={style}><h3><BankFilled /> Debito </h3></div>
         </div>
