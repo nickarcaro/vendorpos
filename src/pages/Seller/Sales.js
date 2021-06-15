@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-const Sells = () => {
+const Sales = () => {
   const [suma, setSuma] = useState(0);
 
   useEffect(() => {
@@ -14,4 +14,4 @@ const Sells = () => {
   );
 };
 
-export default Sells;
+export default Sales;

@@ -3,6 +3,7 @@ import { Row, Col, Space, Button } from 'antd';
 import ListProducts from "../../components/ListProducts"
 import SearchBar from "../../components/SearchBar"
 import ListCart from "../../components/ListCart"
+import ConfirmSale from "../../components/ConfirmSale"
 
 import { CartProvider } from "../../context/CartContext"
 
@@ -31,6 +32,7 @@ const Pos = () => {
               <Col span={24} style={{}}>
                 numpad
                 <Button onClick={() => {window.location.replace("/pos/pago")}}>Pago</Button>
+                <ConfirmSale></ConfirmSale>
               </Col>
             </Row>
         </Col>

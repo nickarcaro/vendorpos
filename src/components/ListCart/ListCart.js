@@ -2,25 +2,26 @@ import React, { useState, useEffect, useContext } from "react";
 import { List, Card, Button } from 'antd';
 import { CartContext } from '../../context/CartContext'
 
+export const clearCart = (setCart) => {
+  console.log( "clearCart.. ")
+  let cleanCart = {
+    productList: [],
+    promotionList: [],
+    total: 0,
+    discount: 0,
+    payment: ""
+  }
+  setCart({...cleanCart})
+}
+
 const ListCart = () => {
 
   const [cart, setCart] = useContext(CartContext)
 
-  const clearCart = () => {
-    console.log( "clearCart.. ")
-    let cleanCart = {
-      productList: [],
-      promotionList: [],
-      total: 0,
-      discount: 0,
-      payment: ""
-    }
-    setCart({...cleanCart})
-  }
 
   return (
     <>
-      <Button onClick={()=> clearCart()}>Clear Cart</Button>
+      <Button onClick={()=> clearCart(setCart)}>Clear Cart</Button>
       <List
         style={{background: "#fff"}}
         footer={<div>Total: ${cart.total}</div>}
