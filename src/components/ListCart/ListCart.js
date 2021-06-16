@@ -21,7 +21,6 @@ const ListCart = () => {
 
   return (
     <>
-      <Button onClick={()=> clearCart(setCart)}>Clear Cart</Button>
       <List
         style={{background: "#fff"}}
         footer={<div>Total: ${cart.total}</div>}

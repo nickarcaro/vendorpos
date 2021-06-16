@@ -7,6 +7,7 @@ import { List, Avatar, Button, Checkbox } from 'antd';
 import { CartContext } from "../../context/CartContext";
 import { LeftCircleTwoTone } from "@ant-design/icons"
 import { RightCircleTwoTone } from "@ant-design/icons"
+import ConfirmSale from "../../components/ConfirmSale";
 
 /*style de padding solo afecta los gutterrow 2 y 3 */
 const style = { padding: '31px 0' };
@@ -110,7 +111,7 @@ const Payment = () => {
 
             <Divider >Vuelto</Divider>
             <Divider >Terminar</Divider>    
-            <Button icon={< RightCircleTwoTone />} type="primary" shape="round" size="Large" style = {{float:"right"}} onClick={() => { window.location.replace("/Voucher") }} >Confirmar</Button>
+            <ConfirmSale></ConfirmSale>
             </div>
             
           </Col>

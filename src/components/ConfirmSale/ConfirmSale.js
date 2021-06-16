@@ -1,18 +1,18 @@
 import React, {useState, useEffect, useContext} from 'react'
 import {CartContext }from '../../context/CartContext'
-import { clearCart } from '../ListCart'
 import { postSale, postSaleDetail} from '../../api/sales'
 import { Button } from 'antd';
+import { RightCircleTwoTone } from "@ant-design/icons"
 
-const createSale = async (cart, setCart, setResponse) => {
+export const createSale = async (cart, setCart) => {
   const sale = {
     almacen: 1,
     total: cart.total
   }
   console.log(cart.productList)
   const createdSale = await postSale(sale)
-  let response = createdSale
-  setResponse(response)
+  // let response = createdSale
+  // setResponse(response)
   for (const prodObj of cart.productList) {
     const saleDetail = {
       producto: prodObj.productId,
@@ -21,10 +21,10 @@ const createSale = async (cart, setCart, setResponse) => {
       precio_unitario: prodObj.unitPrice,
       precio_total: prodObj.totalPrice
     }
-    response = await postSaleDetail(saleDetail) // ver como postear el arreglo de una
+    await postSaleDetail(saleDetail) // ver como postear el arreglo de una
   }
-  setResponse(response)
-
+  // setResponse(response)
+  window.location.replace("/pos/voucher") 
 }
 
 const ConfirmSale = () => {
@@ -34,8 +34,12 @@ const ConfirmSale = () => {
 
   return (
     <>
-      <Button onClick={() => createSale(cart, setCart, setResponse)}>createSale</Button>
-      <Button onClick={() => {console.log(response)}}>logResponse</Button>
+      <Button icon={< RightCircleTwoTone />} type="primary" shape="round" size="Large" style = {{float:"right"}} 
+        onClick={()=>createSale(cart, setCart)}
+      >
+        Confirmar
+      </Button>
+      {/* <Button onClick={() => {console.log(response)}}>logResponse</Button> */}
     </>
   )
 
