@@ -110,9 +110,9 @@ const Payment = () => {
             <div style={style}>
 
               <Divider >Vuelto</Divider>
-              <div>Total:{cart.total}</div>
-              <div>Pago: {document.getElementById('code').value}</div>
-              <div>Vuelto:{document.getElementById('code').value - cart.total}</div>
+              <div></div>
+            
+              <div></div>
 
               <Divider >Terminar</Divider>
               <ConfirmSale></ConfirmSale>
