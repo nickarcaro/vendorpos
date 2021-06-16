@@ -29,7 +29,7 @@ const Payment = () => {
     <div>
       <>
         <Row gutter={100}>
-          <Col className="gutter-row" span={9}>
+          <Col className="gutter-row" span={8}>
             <Button icon={<LeftCircleTwoTone />} type="primary" shape="round" size="Large" onClick={() => { window.location.replace("/pos") }} >Volver</Button>
             <Divider >Productos</Divider>
             <List
@@ -49,7 +49,7 @@ const Payment = () => {
 
                   />
                   <div>{item.totalPrice}</div>
-                  
+
                 </List.Item>
               )}
             />
@@ -79,43 +79,47 @@ const Payment = () => {
               </div>
             </div>
             <Divider >Ingrese monto para calculo de vuelto</Divider>
-            
+
             <div class="btn-group-vertical ml-4 mt-4" role="group" aria-label="Basic example">
               <div class="btn-group">
-                <input style = {{width: "96%",  height: 50}} type= "int" class="text-center form-control-lg mb-1" id="code" ></input>
+                <input style={{ width: "96%", height: 50 }} type="int" class="text-center form-control-lg mb-1" id="code" ></input>
               </div>
               <div class="btn-group">
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '1' }}>1</button>
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '2' }}>2</button>
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '3' }}>3</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '1' }}>1</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '2' }}>2</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '3' }}>3</button>
               </div>
               <div class="btn-group">
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '4' }}>4</button>
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '5' }}>5</button>
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '6' }}>6</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '4' }}>4</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '5' }}>5</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '6' }}>6</button>
               </div>
               <div class="btn-group">
-                <button type="button"style = {{width: "32%",  height: 50, background: "#FFF0F5"}} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '7' }}>7</button>
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '8' }}>8</button>
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '9' }}>9</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '7' }}>7</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '8' }}>8</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '9' }}>9</button>
               </div>
               <div class="btn-group">
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value.slice(0, -1)}}>&lt;</button>
-                <button type="button"style = {{width: "32%",  height: 50, background: "#FFF0F5"}} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value=document.getElementById('code').value + '0' }}>0</button>
-                <button type="button" style = {{width: "32%",  height: 50, background: "#FFF0F5"}}class="btn btn-primary py-3" onClick={() => { document.getElementById('code').value='' }}>Limpiar</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value.slice(0, -1) }}>&lt;</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => { document.getElementById('code').value = document.getElementById('code').value + '0' }}>0</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-primary py-3" onClick={() => { document.getElementById('code').value = '' }}>Limpiar</button>
               </div>
             </div>
           </Col>
           <Col className="gutter-row" span={4}>
             <div style={style}>
 
-            <Divider >Vuelto</Divider>
-            <Divider >Terminar</Divider>    
-            <ConfirmSale></ConfirmSale>
+              <Divider >Vuelto</Divider>
+              <div>Total:{cart.total}</div>
+              <div>Pago: {document.getElementById('code').value}</div>
+              <div>Vuelto:{document.getElementById('code').value - cart.total}</div>
+
+              <Divider >Terminar</Divider>
+              <ConfirmSale></ConfirmSale>
             </div>
-            
+
           </Col>
-          
+
         </Row>
       </>
     </div>
