@@ -103,7 +103,10 @@ const Payment = () => {
                 <input style={{ width: "96%", height: 50 }} type="int" class="text-center form-control-lg mb-1" id="code" ></input>
               </div>
               <div class="btn-group">
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '1' , setsuma(suma + '1'))}>1</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => {
+                  document.getElementById('code').value = document.getElementById('code').value + '1'
+                  setsuma(suma + '1')
+                }}> 1 </button>
                 <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '2' , setsuma(suma + '2'))}>2</button>
                 <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '3' , setsuma(suma + '3'))}>3</button>
               </div>
