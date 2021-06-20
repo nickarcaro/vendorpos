@@ -19,7 +19,6 @@ const Account = () => {
     history.replace("/");
     return null;
   }
-  console.log(user);
   return (
     <Content>
       <Layout
