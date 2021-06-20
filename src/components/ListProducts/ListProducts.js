@@ -82,7 +82,7 @@ const ListProducts = () => {
         renderItem={product => (
           <List.Item>
             <Card onClick={() => clickProduct(product)} title={product.nombre}>
-              ${product.precio_actual}
+              ${product.precio_actual}, {product.stock_actual} unidades en stock
             </Card>
           </List.Item>
         )}
