@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Row, Col, Divider } from "antd";
 import { CreditCardFilled } from "@ant-design/icons";
 import { DollarCircleFilled } from "@ant-design/icons";
@@ -6,6 +6,9 @@ import { BankFilled } from "@ant-design/icons";
 import { List, Button } from "antd";
 import { CartContext } from "../../context/CartContext";
 import { LeftCircleTwoTone } from "@ant-design/icons";
+import useAuth from "../../hooks/useAuth";
+import { getMeApi } from "../../api/user";
+import { useHistory } from "react-router-dom";
 
 import ConfirmSale from "../../components/ConfirmSale";
 
@@ -27,6 +30,22 @@ const Payment = () => {
   //     setCart(JSON.parse(data))
   //   }
   // }, [])
+
+  const [user, setUser] = useState(undefined);
+  const { auth, logout } = useAuth();
+  const history = useHistory();
+  useEffect(() => {
+    (async () => {
+      const response = await getMeApi(logout);
+      setUser(response);
+    })();
+  }, [auth, setUser, logout]);
+  if (user === undefined) return null;
+  if (!auth && !user) {
+    history.replace("/");
+    return null;
+  }
+
   return (
     <div>
       <>
@@ -338,6 +357,7 @@ const Payment = () => {
               <Divider>Terminar</Divider>
               <ConfirmSale
                 meansOfPay={{ e: efectivo, c: credito, d: debito }}
+                user={user}
               ></ConfirmSale>
             </div>
           </Col>
