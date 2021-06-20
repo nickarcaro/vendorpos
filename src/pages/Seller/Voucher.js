@@ -14,16 +14,16 @@ const newSale = async (setCart) => {
 const Voucher = () => {
   const [cart, setCart] = useContext(CartContext)
 
-  useEffect(() => {
-    const data = localStorage.getItem("POS-Almacenes-Cart")
-    if (data) {
-      setCart(JSON.parse(data))
-    }
-  }, [])
+  // useEffect(() => {
+  //   const data = localStorage.getItem("POS-Almacenes-Cart")
+  //   if (data) {
+  //     setCart(JSON.parse(data))
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    localStorage.setItem("POS-Almacenes-Cart", JSON.stringify(cart))
-  },[cart]);
+  // useEffect(() => {
+  //   localStorage.setItem("POS-Almacenes-Cart", JSON.stringify(cart))
+  // },[cart]);
 
   return (
     <>

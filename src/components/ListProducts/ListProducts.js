@@ -18,16 +18,16 @@ const ListProducts = () => {
     })();
   }, [reloadProducts, setReloadProducts]);
 
-  useEffect(() => {
-    const data = localStorage.getItem("POS-Almacenes-Cart")
-    if (data) {
-      setCart(JSON.parse(data))
-    }
-  }, [])
+  // useEffect(() => {
+  //   const data = localStorage.getItem("POS-Almacenes-Cart")
+  //   if (data) {
+  //     setCart(JSON.parse(data))
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    localStorage.setItem("POS-Almacenes-Cart", JSON.stringify(cart))
-  },[cart]);
+  // useEffect(() => {
+  //   localStorage.setItem("POS-Almacenes-Cart", JSON.stringify(cart))
+  // },[cart]);
 
   const addToCart = (product) => {
     console.log("addToCart.. ")

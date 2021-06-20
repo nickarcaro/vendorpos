@@ -6,14 +6,21 @@ import { RightCircleTwoTone } from "@ant-design/icons"
 import { postStockOut, putProduct } from '../../api/products'
 
 export const createSale = async (cart, setCart) => {
+  console.log("creando venta.. carrito: \n", cart)
   const sale = {
     almacen: 1,
     total: cart.total,
-    medio_pago: cart.payment
+    medio_pago: cart.payment,
+    fecha: Date()
 
   }
-  console.log(cart.productList)
+  console.log('cart.productlist: ', cart.productList)
+  console.log('sale: ', sale)
   const createdSale = await postSale(sale)
+  if (createdSale == null) {
+    console.log("error al crear venta")
+    return
+  }
   // let response = createdSale
   // setResponse(response)
   for (const prodObj of cart.productList) {
@@ -36,16 +43,17 @@ export const createSale = async (cart, setCart) => {
     product.stock_actual = newStock
     await putProduct(product.id, product)
 
-    if (overStock) return
-    const stockOut = {
-      cantidad: prodObj.quantity,
-      producto: prodObj.productId,
-      motivo: "Mediante Punto de Venta.",
-      valor_unitario: prodObj.unitPrice,
-      valor_total: prodObj.precio_total,
-      venta: createdSale.id
+    if (!overStock) {
+      const stockOut = {
+        cantidad: prodObj.quantity,
+        producto: prodObj.productId,
+        motivo: "Mediante Punto de Venta.",
+        valor_unitario: prodObj.unitPrice,
+        valor_total: prodObj.precio_total,
+        venta: createdSale.id
+      }
+      await postStockOut(stockOut)
     }
-    await postStockOut(stockOut)
   }
   // setResponse(response)
   window.location.replace("/pos/voucher") 
