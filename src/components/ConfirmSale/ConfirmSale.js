@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useContext} from 'react'
-import {CartContext }from '../../context/CartContext'
+import { CartContext }from '../../context/CartContext'
 import { postSale, postSaleDetail} from '../../api/sales'
 import { Button } from 'antd';
 import { RightCircleTwoTone } from "@ant-design/icons"
