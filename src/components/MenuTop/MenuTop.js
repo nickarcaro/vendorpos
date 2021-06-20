@@ -1,11 +1,26 @@
-import { Menu } from "antd";
 import { Link } from "react-router-dom";
-import useAuth from "../../hooks/useAuth.js";
+import useAuth from "../../hooks/useAuth";
+import { useState, useEffect } from "react";
+import { Menu, Row, Col, Avatar } from "antd";
+import { UserOutlined, PoweroffOutlined } from "@ant-design/icons"; //iconos
+import { getMeApi } from "../../api/user"; //obtengo mis datos como usuario
+
 const MenuTop = () => {
-  const { logout } = useAuth();
+  //captar la url
+  const [user, setUser] = useState(undefined);
+
+  const { logout, auth, store, logoutStore } = useAuth();
+  //obtengo mis datos
+  useEffect(() => {
+    (async () => {
+      const response = await getMeApi(logout);
+      setUser(response || null);
+    })();
+  }, [auth, setUser, logout]);
+
   return (
-    <Menu theme="dark" mode="horizontal" SelectedKeys={["2"]}>
-      <Menu.Item key="1">
+    <Menu theme="dark" mode="horizontal">
+      <Menu.Item>
         <Link to="/">
           <div
             style={{
@@ -19,10 +34,15 @@ const MenuTop = () => {
           </div>
         </Link>
       </Menu.Item>
-      <Menu.Item key="2">nav 2</Menu.Item>
-      <Menu.Item key="3" onClick={logout}>
-        salir
+      <Menu.Item>
+        <Link to={"/pos/cuenta"}>Mi Cuenta</Link>
       </Menu.Item>
+
+      <Menu.Item>
+        <Link to={"/pos/ventas"}>Ventas</Link>
+      </Menu.Item>
+
+      <Menu.Item onClick={logout}>salir</Menu.Item>
     </Menu>
   );
 };

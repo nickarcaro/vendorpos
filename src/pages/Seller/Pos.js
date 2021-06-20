@@ -3,11 +3,9 @@ import { Row, Col, Space, Button } from "antd";
 import ListProducts from "../../components/ListProducts";
 import SearchBar from "../../components/SearchBar";
 import ListCart from "../../components/ListCart";
-
 import { clearCart } from "../../components/ListCart/ListCart";
 import { CartContext } from "../../context/CartContext";
 import { RightCircleTwoTone } from "@ant-design/icons";
-
 import useAuth from "../../hooks/useAuth";
 import { getMeApi } from "../../api/user";
 import { useHistory } from "react-router-dom";
@@ -28,8 +26,6 @@ const Pos = () => {
     history.replace("/");
     return null;
   }
-  console.log(user);
-
   return (
     <>
       <SearchBar></SearchBar>
