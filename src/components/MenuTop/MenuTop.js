@@ -1,26 +1,11 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { useState, useEffect } from "react";
-import { Menu, Row, Col, Avatar } from "antd";
-import { UserOutlined, PoweroffOutlined } from "@ant-design/icons"; //iconos
-import { getMeApi } from "../../api/user"; //obtengo mis datos como usuario
-
+import { Menu } from "antd";
 const MenuTop = () => {
-  //captar la url
-  const [user, setUser] = useState(undefined);
-
-  const { logout, auth, store, logoutStore } = useAuth();
-  //obtengo mis datos
-  useEffect(() => {
-    (async () => {
-      const response = await getMeApi(logout);
-      setUser(response || null);
-    })();
-  }, [auth, setUser, logout]);
-
+  const { logout } = useAuth();
   return (
     <Menu theme="dark" mode="horizontal">
-      <Menu.Item>
+      <Menu.Item key="/">
         <Link to="/">
           <div
             style={{
@@ -34,15 +19,17 @@ const MenuTop = () => {
           </div>
         </Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="/pos/cuenta">
         <Link to={"/pos/cuenta"}>Mi Cuenta</Link>
       </Menu.Item>
 
-      <Menu.Item>
+      <Menu.Item key="/pos/ventas">
         <Link to={"/pos/ventas"}>Ventas</Link>
       </Menu.Item>
 
-      <Menu.Item onClick={logout}>salir</Menu.Item>
+      <Menu.Item key="logout" onClick={logout}>
+        salir
+      </Menu.Item>
     </Menu>
   );
 };

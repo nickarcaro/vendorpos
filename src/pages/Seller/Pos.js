@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Row, Col, Space, Button } from "antd";
+import { Row, Col, Button } from "antd";
 import ListProducts from "../../components/ListProducts";
 import SearchBar from "../../components/SearchBar";
 import ListCart from "../../components/ListCart";
@@ -13,7 +13,7 @@ import { useHistory } from "react-router-dom";
 const Pos = () => {
   const [cart, setCart] = useContext(CartContext);
   const [user, setUser] = useState(undefined);
-  const { auth, logout, setReloadUser } = useAuth();
+  const { auth, logout } = useAuth();
   const history = useHistory();
   useEffect(() => {
     (async () => {

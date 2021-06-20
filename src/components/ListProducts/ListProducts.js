@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { List, Card, Button } from "antd";
+import { List, Card } from "antd";
 import { getProducts } from "../../api/products";
 import { CartContext } from "../../context/CartContext";
 import useAuth from "../../hooks/useAuth";
@@ -16,7 +16,7 @@ const ListProducts = ({ user }) => {
       setProducts(response || []);
       setReloadProducts(false);
     })();
-  }, [reloadProducts, setReloadProducts]);
+  }, [reloadProducts, setReloadProducts, user.almacen, logout]);
 
   // useEffect(() => {
   //   const data = localStorage.getItem("POS-Almacenes-Cart")

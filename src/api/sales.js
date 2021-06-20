@@ -1,5 +1,5 @@
 import { BASE_PATH } from "../utils/constants";
-import { authFetch } from "../utils/fetch";
+//import { authFetch } from "../utils/fetch";
 
 export async function postSale(data) {
   try {

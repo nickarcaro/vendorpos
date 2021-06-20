@@ -3,10 +3,10 @@ import useAuth from "../../hooks/useAuth";
 import { getMeApi } from "../../api/user";
 import { useHistory } from "react-router-dom";
 import { Layout, Button } from "antd";
-const Account = () => {
+const Stores = () => {
   const { Content } = Layout;
   const [user, setUser] = useState(undefined);
-  const { auth, logout } = useAuth();
+  const { auth, logout, setReloadUser } = useAuth();
   const history = useHistory();
   useEffect(() => {
     (async () => {
@@ -19,18 +19,8 @@ const Account = () => {
     history.replace("/");
     return null;
   }
-  return (
-    <Content>
-      <Layout
-        className="site-layout-background"
-        style={{ padding: "24px 0", background: "#fff" }}
-      >
-        <Content style={{ padding: "0 24px", minHeight: 280 }}>
-          <Button type="primary">hola</Button>
-        </Content>
-      </Layout>
-    </Content>
-  );
+
+  return <div>almacenes</div>;
 };
 
-export default Account;
+export default Stores;

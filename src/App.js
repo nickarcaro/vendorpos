@@ -4,7 +4,7 @@ import Navigation from "./config/Navigation";
 import AuthContext from "./context/AuthContext";
 import { setToken, getToken, removeToken } from "./api/token";
 import jwtDecode from "jwt-decode";
-import {CartProvider} from  "./context/CartContext" 
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   const [auth, setAuth] = useState(null);
@@ -28,6 +28,7 @@ function App() {
       token,
       idUser: jwtDecode(token).id,
     });
+
     window.location.replace("/pos");
   };
 
@@ -51,7 +52,9 @@ function App() {
 
   return (
     <AuthContext.Provider value={authData}>
-      <CartProvider><Navigation /></CartProvider>   
+      <CartProvider>
+        <Navigation />
+      </CartProvider>
     </AuthContext.Provider>
   );
 }

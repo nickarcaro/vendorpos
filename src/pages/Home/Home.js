@@ -1,22 +1,31 @@
 import LoginForm from "../../components/LoginForm";
-import React, { useState, useEffect } from "react";
+
 import useAuth from "../../hooks/useAuth";
-import { getMeApi } from "../../api/user";
 import { useHistory } from "react-router-dom";
-import { Layout, Button } from "antd";
+import { Layout, Row, Col } from "antd";
 const Home = () => {
-  const [user, setUser] = useState(undefined);
-  const { auth, logout, setReloadUser } = useAuth();
+  const { auth } = useAuth();
   const history = useHistory();
+  const { Content } = Layout;
 
   if (auth) {
     history.replace("/pos");
     return null;
   }
   return (
-    <div>
-      <LoginForm />
-    </div>
+    <Content>
+      <Row
+        justify="center"
+        align="middle"
+        style={{ marginTop: 150, textAlign: "center" }}
+      >
+        <Col lg={24}>
+          <h1>Iniciar sesión vendedores</h1>
+        </Col>
+
+        <LoginForm />
+      </Row>
+    </Content>
   );
 };
 

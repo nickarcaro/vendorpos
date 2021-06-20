@@ -31,7 +31,10 @@ const LoginForm = () => {
   });
 
   return (
-    <Form style={{ maxWidth: 500 }} onFinish={formik.handleSubmit}>
+    <Form
+      style={{ maxWidth: 300, float: "left" }}
+      onFinish={formik.handleSubmit}
+    >
       <Form.Item>
         <Input
           prefix={<MailOutlined className="site-form-item-icon" />}
