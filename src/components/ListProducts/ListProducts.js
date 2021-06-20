@@ -1,18 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
-import { List, Card, Button } from 'antd';
-import { getProducts } from '../../api/products';
-import { CartContext } from '../../context/CartContext'
-
-
-const ListProducts = () => {
+import { List, Card, Button } from "antd";
+import { getProducts } from "../../api/products";
+import { CartContext } from "../../context/CartContext";
+import useAuth from "../../hooks/useAuth";
+const ListProducts = ({ user }) => {
+  const { logout } = useAuth();
   const [products, setProducts] = useState([]);
   const [reloadProducts, setReloadProducts] = useState(false);
 
-  const [cart, setCart] = useContext(CartContext)
+  const [cart, setCart] = useContext(CartContext);
 
   useEffect(() => {
     (async () => {
-      const response = await getProducts();
+      const response = await getProducts(user.almacen, logout);
       setProducts(response || []);
       setReloadProducts(false);
     })();
@@ -30,41 +30,40 @@ const ListProducts = () => {
   // },[cart]);
 
   const addToCart = (product) => {
-    console.log("addToCart.. ")
+    console.log("addToCart.. ");
 
-    const newProductList = cart.productList
+    const newProductList = cart.productList;
 
-    let isInCart = false
+    let isInCart = false;
 
     for (const prod of newProductList) {
       if (prod.productId === product.id) {
-        isInCart = true
-        prod.quantity += 1
-        prod.totalPrice += prod.unitPrice
-        break
+        isInCart = true;
+        prod.quantity += 1;
+        prod.totalPrice += prod.unitPrice;
+        break;
       }
     }
     if (isInCart === false) {
       const productObject = {
-        productId : product.id,
-        productName : product.nombre,
-        quantity : 1,
-        unitPrice : product.precio_actual,
-        totalPrice : product.precio_actual,
-        productData : product
-      }
-      newProductList.push(productObject)
+        productId: product.id,
+        productName: product.nombre,
+        quantity: 1,
+        unitPrice: product.precio_actual,
+        totalPrice: product.precio_actual,
+        productData: product,
+      };
+      newProductList.push(productObject);
     }
     const cartTotal = cart.total + product.precio_actual;
-    setCart({...cart, productList: newProductList, total: cartTotal})
-    console.log("despues: ", cart)
-  }
-
+    setCart({ ...cart, productList: newProductList, total: cartTotal });
+    console.log("despues: ", cart);
+  };
 
   const clickProduct = (product) => {
-    console.log(product.nombre, "!!")
-    addToCart(product)
-  }
+    console.log(product.nombre, "!!");
+    addToCart(product);
+  };
 
   return (
     <>
@@ -79,7 +78,7 @@ const ListProducts = () => {
           xxl: 6,
         }} // cantidad de calumnas por tamaño de pantalla
         dataSource={products}
-        renderItem={product => (
+        renderItem={(product) => (
           <List.Item>
             <Card onClick={() => clickProduct(product)} title={product.nombre}>
               ${product.precio_actual}, {product.stock_actual} unidades en stock
