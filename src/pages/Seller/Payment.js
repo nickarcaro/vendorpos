@@ -1,12 +1,12 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Row, Col, Divider } from 'antd';
-import { CodeFilled, CreditCardFilled } from "@ant-design/icons"
+import {CreditCardFilled } from "@ant-design/icons"
 import { DollarCircleFilled } from "@ant-design/icons"
 import { BankFilled } from "@ant-design/icons"
-import { List, Avatar, Button, Checkbox } from 'antd';
+import { List,  Button } from 'antd';
 import { CartContext } from "../../context/CartContext";
 import { LeftCircleTwoTone } from "@ant-design/icons"
-import { RightCircleTwoTone } from "@ant-design/icons"
+
 import ConfirmSale from "../../components/ConfirmSale";
 
 /*style de padding solo afecta los gutterrow 2 y 3 */
@@ -70,7 +70,7 @@ const Payment = () => {
                   <Col span={12}><div ><h3> <DollarCircleFilled /> Efectivo </h3> </div ></Col>
                   <Col span={12}>
                     <div>
-                      <input id= "checkbox1" type="checkbox" class="radiocheckbox" value="A" onChange={() => (setparam1(true), setparam2(false), setparam3(false))} checked = {param1}   />
+                      <input id= "checkbox1" type="checkbox" class="radiocheckbox" value="A" onChange={() => (setparam1(true), setparam2(false), setparam3(false), cart.payment = "Efectivo")} checked = {param1}   />
                     </div>
                   </Col>
                 </Row>
@@ -80,7 +80,7 @@ const Payment = () => {
                   <Col span={12}><div ><h3> <CreditCardFilled /> Credito </h3></div ></Col>
                   <Col span={12}>
                     <div>
-                      <input  id= "checkbox2" type="checkbox" class="radiocheckbox" value="B" onChange={() => (setparam2(true), setparam1(false), setparam3(false))} checked = {param2} />
+                      <input  id= "checkbox2" type="checkbox" class="radiocheckbox" value="B" onChange={() => (setparam2(true), setparam1(false), setparam3(false), cart.payment = "Credito")} checked = {param2} />
                     </div>
                   </Col>
                 </Row>
@@ -90,7 +90,7 @@ const Payment = () => {
                   <Col span={12}><div><h3><BankFilled /> Debito </h3></div ></Col>
                   <Col span={12}>
                     <div>
-                      <input  id= "checkbox3" type="checkbox" class="radiocheckbox" value="V" onChange={() => (setparam3(true), setparam2(false), setparam1(false))} checked = {param3}  />
+                      <input  id= "checkbox3" type="checkbox" class="radiocheckbox" value="V" onChange={() => (setparam3(true), setparam2(false), setparam1(false), cart.payment = "Debito")} checked = {param3}  />
                     </div>
                   </Col>
                 </Row>
@@ -126,7 +126,7 @@ const Payment = () => {
           </Col>
           <Col className="gutter-row" span={4}>
             <div style={style}>
-
+              
               <Divider >Vuelto</Divider>
               <div>Total: {cart.total}</div>
               <div>Efectivo entregado: {suma}</div>
