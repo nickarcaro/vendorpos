@@ -7,6 +7,10 @@ import { postStockOut, putProduct } from '../../api/products'
 
 export const createSale = async (cart, setCart) => {
   console.log("creando venta.. carrito: \n", cart)
+  if (cart.payment == "" || cart.payment == null){
+    console.log("no se asigno medio de pago")
+    return
+  }
   const sale = {
     almacen: 1,
     total: cart.total,
@@ -49,8 +53,10 @@ export const createSale = async (cart, setCart) => {
         producto: prodObj.productId,
         motivo: "Mediante Punto de Venta.",
         valor_unitario: prodObj.unitPrice,
-        valor_total: prodObj.precio_total,
-        venta: createdSale.id
+        valor_total: prodObj.totalPrice,
+        venta: createdSale.id,
+        tipo: "Venta",
+        fecha: Date()
       }
       await postStockOut(stockOut)
     }
@@ -59,7 +65,7 @@ export const createSale = async (cart, setCart) => {
   window.location.replace("/pos/voucher") 
 }
 
-const ConfirmSale = () => {
+const ConfirmSale = ({meansOfPay}) => {
 
   const [cart, setCart] = useContext(CartContext)
   const [response, setResponse] = useState([])
@@ -67,7 +73,14 @@ const ConfirmSale = () => {
   return (
     <>
       <Button icon={< RightCircleTwoTone />} type="primary" shape="round" size="Large" style = {{float:"right"}} 
-        onClick={()=>createSale(cart, setCart)}
+        onClick={()=>{
+          if (meansOfPay.e || meansOfPay.c || meansOfPay.d){
+            createSale(cart, setCart)
+          }
+          else {
+            console.log("No se ha elegido medio de pago") // eventualmente hacer un popup "Eliga medio de pago"
+          }
+        }}
       >
         Confirmar
       </Button>
