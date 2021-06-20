@@ -133,7 +133,7 @@ const Payment = () => {
               <div>Vuelto: {suma-cart.total}</div>
               
               <Divider >Terminar</Divider>
-              <ConfirmSale></ConfirmSale>
+              <ConfirmSale meansOfPay={{e: efectivo, c: credito, d: debito}}></ConfirmSale>
             </div>
 
           </Col>
