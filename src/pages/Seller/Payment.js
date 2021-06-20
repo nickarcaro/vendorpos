@@ -20,9 +20,9 @@ var value = 0;
 const Payment = () => {
 
   const [suma, setsuma] = useState("");
-  const [param1, setparam1] = useState(false);
-  const [param2, setparam2] = useState(false);
-  const [param3, setparam3] = useState(false);
+  const [efectivo, setEfectivo] = useState(false);
+  const [credito, setCredito] = useState(false);
+  const [debito, setDebito] = useState(false);
 
   const [cart, setCart] = useContext(CartContext)
   useEffect(() => {
@@ -70,7 +70,7 @@ const Payment = () => {
                   <Col span={12}><div ><h3> <DollarCircleFilled /> Efectivo </h3> </div ></Col>
                   <Col span={12}>
                     <div>
-                      <input id= "checkbox1" type="checkbox" class="radiocheckbox" value="A" onChange={() => (setparam1(true), setparam2(false), setparam3(false), cart.payment = "Efectivo")} checked = {param1}   />
+                      <input id= "checkbox1" type="checkbox" class="radiocheckbox" value="A" onChange={() => (setEfectivo(true), setCredito(false), setDebito(false), cart.payment = "Efectivo")} checked = {efectivo}   />
                     </div>
                   </Col>
                 </Row>
@@ -80,7 +80,7 @@ const Payment = () => {
                   <Col span={12}><div ><h3> <CreditCardFilled /> Credito </h3></div ></Col>
                   <Col span={12}>
                     <div>
-                      <input  id= "checkbox2" type="checkbox" class="radiocheckbox" value="B" onChange={() => (setparam2(true), setparam1(false), setparam3(false), cart.payment = "Credito")} checked = {param2} />
+                      <input  id= "checkbox2" type="checkbox" class="radiocheckbox" value="B" onChange={() => (setCredito(true), setEfectivo(false), setDebito(false), cart.payment = "Credito")} checked = {credito} />
                     </div>
                   </Col>
                 </Row>
@@ -90,7 +90,7 @@ const Payment = () => {
                   <Col span={12}><div><h3><BankFilled /> Debito </h3></div ></Col>
                   <Col span={12}>
                     <div>
-                      <input  id= "checkbox3" type="checkbox" class="radiocheckbox" value="V" onChange={() => (setparam3(true), setparam2(false), setparam1(false), cart.payment = "Debito")} checked = {param3}  />
+                      <input  id= "checkbox3" type="checkbox" class="radiocheckbox" value="V" onChange={() => (setDebito(true), setCredito(false), setEfectivo(false), cart.payment = "Debito")} checked = {debito}  />
                     </div>
                   </Col>
                 </Row>
