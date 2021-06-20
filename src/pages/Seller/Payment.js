@@ -70,7 +70,7 @@ const Payment = () => {
                   <Col span={12}><div ><h3> <DollarCircleFilled /> Efectivo </h3> </div ></Col>
                   <Col span={12}>
                     <div>
-                      <input id= "checkbox1" type="checkbox" class="radiocheckbox" value="A" onChange={() => (setEfectivo(true), setCredito(false), setDebito(false), setCart({...cart, payment: "efectivo"}))} checked = {efectivo}   />
+                      <input id= "checkbox1" type="checkbox" className="radiocheckbox" value="A" onChange={() => (setEfectivo(true), setCredito(false), setDebito(false), setCart({...cart, payment: "efectivo"}))} checked = {efectivo}   />
                     </div>
                   </Col>
                 </Row>
@@ -80,7 +80,7 @@ const Payment = () => {
                   <Col span={12}><div ><h3> <CreditCardFilled /> Credito </h3></div ></Col>
                   <Col span={12}>
                     <div>
-                      <input  id= "checkbox2" type="checkbox" class="radiocheckbox" value="B" onChange={() => (setCredito(true), setEfectivo(false), setDebito(false), setCart({...cart, payment: "credito"}))} checked = {credito} />
+                      <input  id= "checkbox2" type="checkbox" className="radiocheckbox" value="B" onChange={() => (setCredito(true), setEfectivo(false), setDebito(false), setCart({...cart, payment: "credito"}))} checked = {credito} />
                     </div>
                   </Col>
                 </Row>
@@ -90,7 +90,7 @@ const Payment = () => {
                   <Col span={12}><div><h3><BankFilled /> Debito </h3></div ></Col>
                   <Col span={12}>
                     <div>
-                      <input  id= "checkbox3" type="checkbox" class="radiocheckbox" value="V" onChange={() => (setDebito(true), setCredito(false), setEfectivo(false), setCart({...cart, payment: "debito"}))} checked = {debito}  />
+                      <input  id= "checkbox3" type="checkbox" className="radiocheckbox" value="V" onChange={() => (setDebito(true), setCredito(false), setEfectivo(false), setCart({...cart, payment: "debito"}))} checked = {debito}  />
                     </div>
                   </Col>
                 </Row>
@@ -98,32 +98,32 @@ const Payment = () => {
             </div>
             <Divider >Ingrese monto para calculo de vuelto</Divider>
 
-            <div class="btn-group-vertical ml-4 mt-4" role="group" aria-label="Basic example">
-              <div class="btn-group">
-                <input style={{ width: "96%", height: 50 }} type="int" class="text-center form-control-lg mb-1" id="code" ></input>
+            <div className="btn-group-vertical ml-4 mt-4" role="group" aria-label="Basic example">
+              <div className="btn-group">
+                <input style={{ width: "96%", height: 50 }} type="int" className="text-center form-control-lg mb-1" id="code" ></input>
               </div>
-              <div class="btn-group">
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => {
+              <div className="btn-group">
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => {
                   document.getElementById('code').value = document.getElementById('code').value + '1'
                   setsuma(suma + '1')
                 }}> 1 </button>
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '2' , setsuma(suma + '2'))}>2</button>
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '3' , setsuma(suma + '3'))}>3</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '2' , setsuma(suma + '2'))}>2</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '3' , setsuma(suma + '3'))}>3</button>
               </div>
-              <div class="btn-group">
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '4' , setsuma(suma + '4'))}>4</button>
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '5' , setsuma(suma + '5'))}>5</button>
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '6' , setsuma(suma + '6'))}>6</button>
+              <div className="btn-group">
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '4' , setsuma(suma + '4'))}>4</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '5' , setsuma(suma + '5'))}>5</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '6' , setsuma(suma + '6'))}>6</button>
               </div>
-              <div class="btn-group">
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '7' , setsuma(suma + '7'))}>7</button>
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '8' , setsuma(suma + '8'))}>8</button>
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '9' , setsuma(suma + '9'))}>9</button>
+              <div className="btn-group">
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '7' , setsuma(suma + '7'))}>7</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '8' , setsuma(suma + '8'))}>8</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '9' , setsuma(suma + '9'))}>9</button>
               </div>
-              <div class="btn-group">
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value.slice(0, -1), setsuma(suma.slice(0,-1)))}>&lt;</button>
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '0', setsuma(suma + '0') )}>0</button>
-                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} class="btn btn-primary py-3" onClick={() => ( document.getElementById('code').value = '', setsuma("") )}>Limpiar</button>
+              <div className="btn-group">
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value.slice(0, -1), setsuma(suma.slice(0,-1)))}>&lt;</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-outline-secondary py-3" onClick={() => ( document.getElementById('code').value = document.getElementById('code').value + '0', setsuma(suma + '0') )}>0</button>
+                <button type="button" style={{ width: "32%", height: 50, background: "#FFF0F5" }} className="btn btn-primary py-3" onClick={() => ( document.getElementById('code').value = '', setsuma("") )}>Limpiar</button>
               </div>
             </div>
           </Col>
