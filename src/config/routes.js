@@ -7,6 +7,7 @@ import Sales from "../pages/Seller/Sales";
 import Voucher from "../pages/Seller/Voucher";
 import Payment from "../pages/Seller/Payment";
 import PosLayout from "../layouts/PosLayout";
+import SelectStore from "../pages/SelectStore";
 
 const routes = [
   {
@@ -44,6 +45,12 @@ const routes = [
     component: Voucher,
     exact: true,
     layout: PosLayout,
+  },
+  {
+    path:"/select-store",
+    component: SelectStore,
+    exact: true,
+    layout: "div"
   },
   {
     layout: "div",

@@ -5,10 +5,12 @@ import AuthContext from "./context/AuthContext";
 import { setToken, getToken, removeToken } from "./api/token";
 import jwtDecode from "jwt-decode";
 import { CartProvider } from "./context/CartContext";
+import { StoreProvider } from "./context/StoreContext"
 
 function App() {
   const [auth, setAuth] = useState(null);
   const [reloadUser, setReloadUser] = useState(false);
+
   useEffect(() => {
     const token = getToken();
     if (token) {
@@ -29,7 +31,7 @@ function App() {
       idUser: jwtDecode(token).id,
     });
 
-    window.location.replace("/pos");
+    window.location.replace("/select-store");
   };
 
   const logout = useCallback(() => {
@@ -52,9 +54,11 @@ function App() {
 
   return (
     <AuthContext.Provider value={authData}>
-      <CartProvider>
-        <Navigation />
-      </CartProvider>
+      <StoreProvider>
+        <CartProvider>
+          <Navigation />
+        </CartProvider>
+      </StoreProvider>
     </AuthContext.Provider>
   );
 }
