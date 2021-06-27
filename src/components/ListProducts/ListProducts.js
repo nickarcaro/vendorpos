@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { List, Card } from "antd";
+import { List, Card} from "antd";
 import { getProducts } from "../../api/products";
 import { CartContext } from "../../context/CartContext";
 import useAuth from "../../hooks/useAuth";
@@ -48,13 +48,6 @@ const ListProducts = ({ user, promotions }) => {
           setCart({...cart, idsNotInPromotion: newIdsNotInPromotion, promotionList: newPromotionList})
         }
       }
-      // for (const prodProm of prom.productos_promocion) {
-      //   if (product.id == prodProm.producto.id) {
-      //     const promotionObject = {
-
-      //     }
-      //   }
-      // }
     }
   }
 
