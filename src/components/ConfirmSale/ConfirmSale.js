@@ -5,6 +5,7 @@ import { Button } from "antd";
 import { RightCircleTwoTone } from "@ant-design/icons";
 import { postStockOut, putProduct } from "../../api/products";
 import { useHistory } from "react-router-dom";
+import { getTotal, getPromotionDiscount } from "../ListCart/ListCart";
 
 export const createSale = async (cart, setCart, user, history) => {
   console.log("creando venta.. carrito: \n", cart);
@@ -14,7 +15,8 @@ export const createSale = async (cart, setCart, user, history) => {
   }
   const sale = {
     almacen: user.almacen,
-    total: cart.total,
+    total: getTotal(cart),
+    promocions: cart.promotionList,
     medio_pago: cart.payment,
     fecha: Date(),
   };

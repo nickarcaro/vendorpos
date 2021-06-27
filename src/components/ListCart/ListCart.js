@@ -15,7 +15,7 @@ export const clearCart = (setCart) => {
   setCart({ ...cleanCart });
 };
 
-const getPromotionDiscount = (promotion) => {
+export const getPromotionDiscount = (promotion) => {
   let totalOriginal = 0
   for (const prodProm of promotion.productos_promocion){
     totalOriginal += prodProm.producto.precio_actual * prodProm.cantidad
@@ -23,7 +23,7 @@ const getPromotionDiscount = (promotion) => {
   return totalOriginal - promotion.precio_promocion
 }
 
-const getTotal = (cart) => {
+export const getTotal = (cart) => {
   let total = cart.total
   for (const prom of cart.promotionList) {
     total -= getPromotionDiscount(prom)
@@ -46,12 +46,12 @@ const ListCart = () => {
                 <Col span={12}>
                   {
                     cart.promotionList.length > 0 ?
-                    <h3>Sub-Total</h3> :
-                    <h3>Total</h3>
+                    <h4>Sub-Total</h4> :
+                    <h4>Total</h4>
                   }
                 </Col>
                 <Col span={12}>
-                  <h3 style={{ float: "right" }}>${cart.total}</h3>
+                  <h4 style={{ float: "right" }}>${cart.total}</h4>
                 </Col>
               </Row>
             }

@@ -11,6 +11,7 @@ import { getMeApi } from "../../api/user";
 import { useHistory } from "react-router-dom";
 
 import ConfirmSale from "../../components/ConfirmSale";
+import { getTotal, getPromotionDiscount } from '../../components/ListCart/ListCart'
 
 /*style de padding solo afecta los gutterrow 2 y 3 */
 const style = { padding: "31px 0" };
@@ -24,12 +25,6 @@ const Payment = () => {
   const [debito, setDebito] = useState(false);
 
   const [cart, setCart] = useContext(CartContext);
-  // useEffect(() => {
-  //   const data = localStorage.getItem("POS-Almacenes-Cart")
-  //   if (data) {
-  //     setCart(JSON.parse(data))
-  //   }
-  // }, [])
 
   const [user, setUser] = useState(undefined);
   const { auth, logout } = useAuth();
@@ -67,9 +62,15 @@ const Payment = () => {
               itemLayout="horizontal"
               footer={
                 <Row>
-                  <Col span={12}>Total</Col>
                   <Col span={12}>
-                    <div style={{ float: "right" }}>{cart.total}</div>
+                    {
+                      cart.promotionList.length > 0 ?
+                      <h4>Sub-Total</h4> :
+                      <h4>Total</h4>
+                    }
+                  </Col>
+                  <Col span={12}>
+                    <h4 style={{ float: "right" }}>${cart.total}</h4>
                   </Col>
                 </Row>
               }
@@ -89,6 +90,37 @@ const Payment = () => {
                 </List.Item>
               )}
             />
+            <Divider>Promociones</Divider>
+              { 
+              cart.promotionList.length > 0 ? 
+              <List
+                // footer={<div>Total: ${cart.total}</div>}
+                footer={
+                  <Row>
+                    <Col span={12}><h3>Total</h3></Col>
+                    <Col span={12}>
+                      <h3 style={{ float: "right" }}>${getTotal(cart)}</h3>
+                    </Col>
+                  </Row>
+                }
+                dataSource={cart.promotionList}
+                renderItem={(promotion) => (
+                  <List.Item>
+                    <List.Item.Meta
+                      /*avatar={<Avatar src="/uploads/perro_729fefb8c4.png" />}*/
+                      title={promotion.nombre}
+                      description={
+                        <div>
+                          Valor: ${promotion.precio_promocion}
+                        </div>
+                      }
+                    />
+                    <div>Descuento: ${getPromotionDiscount(promotion)}</div>
+                  </List.Item>
+                )}
+              />
+              : null
+            }           
           </Col>
 
           <Col className="gutter-row" span={5}>
