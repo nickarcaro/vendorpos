@@ -15,6 +15,7 @@ const Pos = () => {
   const [user, setUser] = useState(undefined);
   const { auth, logout } = useAuth();
   const history = useHistory();
+
   useEffect(() => {
     (async () => {
       const response = await getMeApi(logout);
@@ -28,7 +29,6 @@ const Pos = () => {
   }
   return (
     <>
-      <SearchBar></SearchBar>
       <Row gutter={16}>
         <Col span={16}>
           <ListProducts user={user}></ListProducts>
