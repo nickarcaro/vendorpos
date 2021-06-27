@@ -53,13 +53,12 @@ const Pos = () => {
                 size="Large"
                 style={{ float: "right" }}
                 onClick={() => {
-                  window.location.replace("/pos/pago");
+                  history.push("/pos/pago");
                 }}
               >
                 Pago
               </Button>
-              {/* <Button onClick={() => {window.location.replace("/pos/pago")}}>Pago</Button> */}
-              {/* <ConfirmSale></ConfirmSale> */}
+              
             </Col>
           </Row>
         </Col>

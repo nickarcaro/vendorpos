@@ -4,8 +4,9 @@ import { postSale, postSaleDetail } from "../../api/sales";
 import { Button } from "antd";
 import { RightCircleTwoTone } from "@ant-design/icons";
 import { postStockOut, putProduct } from "../../api/products";
+import { useHistory } from "react-router-dom";
 
-export const createSale = async (cart, setCart, user) => {
+export const createSale = async (cart, setCart, user, history) => {
   console.log("creando venta.. carrito: \n", cart);
   if (cart.payment === "" || cart.payment === null) {
     console.log("no se asigno medio de pago");
@@ -61,11 +62,12 @@ export const createSale = async (cart, setCart, user) => {
     }
   }
   // setResponse(response)
-  window.location.replace("/pos/voucher");
+  history.push("/pos/voucher");
 };
 
 const ConfirmSale = ({ meansOfPay, user }) => {
   const [cart, setCart] = useContext(CartContext);
+  const history = useHistory()
   // const [response, setResponse] = useState([]);
 
   return (
@@ -78,7 +80,7 @@ const ConfirmSale = ({ meansOfPay, user }) => {
         style={{ float: "right" }}
         onClick={() => {
           if (meansOfPay.e || meansOfPay.c || meansOfPay.d) {
-            createSale(cart, setCart, user);
+            createSale(cart, setCart, user, history);
           } else {
             console.log("No se ha elegido medio de pago"); // eventualmente hacer un popup "Eliga medio de pago"
           }

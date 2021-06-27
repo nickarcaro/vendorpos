@@ -9,7 +9,7 @@ const Home = () => {
   const { Content } = Layout;
 
   if (auth) {
-    history.replace("/pos");
+    history.push("/pos");
     return null;
   }
   return (

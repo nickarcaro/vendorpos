@@ -4,6 +4,7 @@ import {getStores, putUserStore} from '../api/stores'
 import useAuth from '../hooks/useAuth'
 import { List, Button } from "antd";
 import { StoreContext } from '../context/StoreContext'
+import { useHistory } from "react-router-dom";
 
 
 
@@ -13,12 +14,13 @@ const SelectStore = () => {
   const [stores, setStores] = useState([])
   const [storesFetched, setStoresFetched] = useState(false)
   const [storeId, setStoreId] = useState(undefined)
+  const history = useHistory()
   
 
   useEffect(() => {
     (async () => {
       if (user === undefined) return
-      if (user.is_admin === false) window.location.replace("/pos")
+      if (user.is_admin === false) history.push("/pos")
       else if (user.is_admin === true){
         const storeData = await getStores(user.id, logout)
         console.log('storedata: ',  storeData)
@@ -37,7 +39,7 @@ const SelectStore = () => {
       if (user === undefined) return
       if (storeId === undefined) return
       await putUserStore(user.id, {...user, almacen: storeId}, logout)
-      window.location.replace("/post")
+      history.push("/post")
     })();
   },[storeId])
 

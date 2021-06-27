@@ -57,7 +57,7 @@ const Payment = () => {
               shape="round"
               size="Large"
               onClick={() => {
-                window.location.replace("/pos");
+                history.push("/pos");
               }}
             >
               Volver
