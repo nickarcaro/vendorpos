@@ -7,6 +7,7 @@ export const clearCart = (setCart) => {
   let cleanCart = {
     productList: [],
     promotionList: [],
+    idsNotInPromotion: [],
     total: 0,
     discount: 0,
     payment: "",

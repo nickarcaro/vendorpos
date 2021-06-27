@@ -5,7 +5,7 @@ import { CartContext } from "../../context/CartContext";
 import useAuth from "../../hooks/useAuth";
 import SearchBar from "../../components/SearchBar";
 
-const ListProducts = ({ user }) => {
+const ListProducts = ({ user, promotions }) => {
   const { logout } = useAuth();
   const [products, setProducts] = useState([]);
   const [reloadProducts, setReloadProducts] = useState(false);
@@ -21,9 +21,47 @@ const ListProducts = ({ user }) => {
     })();
   }, [reloadProducts, setReloadProducts, user.almacen, logout]);
 
+  const checkPromotions = (product, newIdsNotInPromotion) => {
+    for (const prom of promotions) {
+      if (prom.productos_promocion.some(item => item.producto.id === product.id)) { //si el producto agregado es parte de la promocion
+        let ok = true
+        for (const promProd of prom.productos_promocion) { //revisando si estan todos los productos que componen la promocion
+          const targetAmount = promProd.cantidad
+          let counter = 0
+          for (const productId of newIdsNotInPromotion) {
+            if (promProd.producto.id === productId) counter += 1
+          }
+          if (counter < targetAmount) ok = false
+        }
+        if (ok) { //existen suficientes productos en el carro para agregar la promocion
+          for (const promProd of prom.productos_promocion) { // se sacan de idsNotInPromotion las ids de estos productos
+            for (let i = 0; i<promProd.cantidad; i++) {
+              let index = newIdsNotInPromotion.indexOf(promProd.producto.id)
+              console.log('index: ', index)
+              newIdsNotInPromotion.splice(index,1) //quita elemento de arreglo
+            }
+          }
+          console.log("newIds: ", newIdsNotInPromotion)
+          // se agrega promocion al carrito
+          const newPromotionList = cart.promotionList
+          newPromotionList.push(prom)
+          setCart({...cart, idsNotInPromotion: newIdsNotInPromotion, promotionList: newPromotionList})
+        }
+      }
+      // for (const prodProm of prom.productos_promocion) {
+      //   if (product.id == prodProm.producto.id) {
+      //     const promotionObject = {
+
+      //     }
+      //   }
+      // }
+    }
+  }
 
   const addToCart = (product) => {
     console.log("addToCart.. ");
+    const newIdsNotInPromotion = cart.idsNotInPromotion;
+    newIdsNotInPromotion.push(product.id)
 
     const newProductList = cart.productList;
 
@@ -49,7 +87,8 @@ const ListProducts = ({ user }) => {
       newProductList.push(productObject);
     }
     const cartTotal = cart.total + product.precio_actual;
-    setCart({ ...cart, productList: newProductList, total: cartTotal });
+    setCart({ ...cart, productList: newProductList, idsNotInPromotion: newIdsNotInPromotion , total: cartTotal });
+    checkPromotions(product, newIdsNotInPromotion)
     console.log("despues: ", cart);
   };
 

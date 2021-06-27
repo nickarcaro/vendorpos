@@ -9,12 +9,14 @@ import { RightCircleTwoTone } from "@ant-design/icons";
 import useAuth from "../../hooks/useAuth";
 import { getMeApi } from "../../api/user";
 import { useHistory } from "react-router-dom";
+import { getPromotions } from "../../api/promotions"
 
 const Pos = () => {
   const [cart, setCart] = useContext(CartContext);
   const [user, setUser] = useState(undefined);
   const { auth, logout } = useAuth();
   const history = useHistory();
+  const [promotions, setPromotions] = useState([])
 
   useEffect(() => {
     (async () => {
@@ -22,6 +24,17 @@ const Pos = () => {
       setUser(response);
     })();
   }, [auth, setUser, logout]);
+
+  useEffect(() => {
+    const fetchPromotions = async () => {
+      if (user === undefined) return
+      const response = await getPromotions(user.almacen, logout)
+      console.log("valor response: ", response)
+      setPromotions(response)
+    }
+    fetchPromotions()
+  },[user, logout])
+
   if (user === undefined) return null;
   if (!auth && !user) {
     history.replace("/");
@@ -31,7 +44,7 @@ const Pos = () => {
     <>
       <Row gutter={16}>
         <Col span={16}>
-          <ListProducts user={user}></ListProducts>
+          <ListProducts user={user} promotions={promotions}></ListProducts>
           {/* <div style={ {background: "#fff"}} >matriz de productos</div> */}
         </Col>
         {/* style={{background: "#fff"}} */}
