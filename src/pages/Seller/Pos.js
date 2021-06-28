@@ -10,6 +10,18 @@ import useAuth from "../../hooks/useAuth";
 import { getMeApi } from "../../api/user";
 import { useHistory } from "react-router-dom";
 import { getPromotions } from "../../api/promotions"
+import { date } from "yup";
+
+const filterPromotions = (promotions) => {
+  const now = new Date()
+  const result = promotions.filter((promotion)=> {
+    const start = new Date(promotion.inicio_vigencia)
+    const end = new Date(promotion.fin_vigencia)
+    if (start <= now && now <= end) return true
+    return false
+  })
+  return result
+}
 
 const Pos = () => {
   const [cart, setCart] = useContext(CartContext);
@@ -29,8 +41,10 @@ const Pos = () => {
     const fetchPromotions = async () => {
       if (user === undefined) return
       const response = await getPromotions(user.almacen, logout)
-      console.log("valor response: ", response)
-      setPromotions(response)
+      const result = filterPromotions(response)
+      console.log("valor response promociones: ", response)
+      console.log("valor result promociones: ", result)
+      setPromotions(result)
     }
     fetchPromotions()
   },[user, logout])

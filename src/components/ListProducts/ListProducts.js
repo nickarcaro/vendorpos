@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { List, Card, Row, Col } from "antd";
+import { List, Card, Row, Col, Space } from "antd";
 import { getProducts } from "../../api/products";
 import { getCategories } from "../../api/categories";
 import { CartContext } from "../../context/CartContext";
@@ -103,25 +103,43 @@ const ListProducts = ({ user, promotions }) => {
   return (
     <>
 
-          <Row gutter={[16, 16]}>
+          {/* <Row gutter={[16, 16]}>
             <Col span={8}><SearchBar setFilterText={setFilterText}></SearchBar>  <button  onClick={() => (setProducts(products2))} > Todos los productos</button> </Col>
-            <Col span={16}>  <List
+            <Col span={16}>  
+              <List
+                grid={{
+                  gutter: 16,
+                }}
+                dataSource={categories}
+                
+                renderItem={item => (
+                
+                  <List.Item> 
+                    <button  onClick={() => (setProducts(item.productos))} >{item.nombre}</button>
+                  </List.Item>
+                )}  
+              />
+            </Col>    
+          </Row> */}
           
-          grid={{
-            gutter: 16,
-          }}
-          dataSource={categories}
           
-          renderItem={item => (
-           
-            <List.Item> 
-              <button  onClick={() => (setProducts(item.productos))} >{item.nombre}</button>
-            </List.Item>
-          )}
+            <SearchBar setFilterText={setFilterText}></SearchBar>
+            <Space direction='horizontal' size='small'>
+              <button  onClick={() => (setProducts(products2))} > Todos </button>
+              <List
+                  grid={{
+                    gutter: 4,
+                  }}
+                  dataSource={categories}  
+                  renderItem={item => ( 
+                    <List.Item> 
+                      <button  onClick={() => (setProducts(item.productos))} >{item.nombre}</button>
+                    </List.Item>
+                  )}  
+                />
+            </Space>
           
-        /></Col>
-           
-          </Row>
+
        
          
 
