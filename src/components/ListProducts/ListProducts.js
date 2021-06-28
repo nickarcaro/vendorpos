@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { List, Card} from "antd";
+import { List, Card, Row, Col } from "antd";
 import { getProducts } from "../../api/products";
+import { getCategories } from "../../api/categories";
 import { CartContext } from "../../context/CartContext";
 import useAuth from "../../hooks/useAuth";
 import SearchBar from "../../components/SearchBar";
@@ -8,6 +9,8 @@ import SearchBar from "../../components/SearchBar";
 const ListProducts = ({ user, promotions }) => {
   const { logout } = useAuth();
   const [products, setProducts] = useState([]);
+  const [products2, setProducts2] = useState([]);
+  const [categories, setCategories] = useState();
   const [reloadProducts, setReloadProducts] = useState(false);
   const [filterText, setFilterText] = useState("")
 
@@ -16,8 +19,12 @@ const ListProducts = ({ user, promotions }) => {
   useEffect(() => {
     (async () => {
       const response = await getProducts(user.almacen, logout);
+      const response2 = await getCategories(user.almacen, logout)
       setProducts(response || []);
+      setProducts2(response || []);
+      setCategories(response2 || []);
       setReloadProducts(false);
+      console.log(categories);
     })();
   }, [reloadProducts, setReloadProducts, user.almacen, logout]);
 
@@ -35,17 +42,17 @@ const ListProducts = ({ user, promotions }) => {
         }
         if (ok) { //existen suficientes productos en el carro para agregar la promocion
           for (const promProd of prom.productos_promocion) { // se sacan de idsNotInPromotion las ids de estos productos
-            for (let i = 0; i<promProd.cantidad; i++) {
+            for (let i = 0; i < promProd.cantidad; i++) {
               let index = newIdsNotInPromotion.indexOf(promProd.producto.id)
               console.log('index: ', index)
-              newIdsNotInPromotion.splice(index,1) //quita elemento de arreglo
+              newIdsNotInPromotion.splice(index, 1) //quita elemento de arreglo
             }
           }
           console.log("newIds: ", newIdsNotInPromotion)
           // se agrega promocion al carrito
           const newPromotionList = cart.promotionList
           newPromotionList.push(prom)
-          setCart({...cart, idsNotInPromotion: newIdsNotInPromotion, promotionList: newPromotionList})
+          setCart({ ...cart, idsNotInPromotion: newIdsNotInPromotion, promotionList: newPromotionList })
         }
       }
     }
@@ -80,13 +87,12 @@ const ListProducts = ({ user, promotions }) => {
       newProductList.push(productObject);
     }
     const cartTotal = cart.total + product.precio_actual;
-    setCart({ ...cart, productList: newProductList, idsNotInPromotion: newIdsNotInPromotion , total: cartTotal });
+    setCart({ ...cart, productList: newProductList, idsNotInPromotion: newIdsNotInPromotion, total: cartTotal });
     checkPromotions(product, newIdsNotInPromotion)
     console.log("despues: ", cart);
   };
 
   const clickProduct = (product) => {
-    console.log(product.nombre, "!!");
     addToCart(product);
   };
 
@@ -96,7 +102,29 @@ const ListProducts = ({ user, promotions }) => {
 
   return (
     <>
-      <SearchBar setFilterText={setFilterText}></SearchBar>
+
+          <Row gutter={[16, 16]}>
+            <Col span={8}><SearchBar setFilterText={setFilterText}></SearchBar>  <button  onClick={() => (setProducts(products2))} > Todos los productos</button> </Col>
+            <Col span={16}>  <List
+          
+          grid={{
+            gutter: 16,
+          }}
+          dataSource={categories}
+          
+          renderItem={item => (
+           
+            <List.Item> 
+              <button  onClick={() => (setProducts(item.productos))} >{item.nombre}</button>
+            </List.Item>
+          )}
+          
+        /></Col>
+           
+          </Row>
+       
+         
+
       <List
         grid={{
           gutter: 16,
