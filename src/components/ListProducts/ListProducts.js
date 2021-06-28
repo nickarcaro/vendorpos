@@ -21,7 +21,7 @@ const ListProducts = ({ user, promotions }) => {
     })();
   }, [reloadProducts, setReloadProducts, user.almacen, logout]);
 
-  const checkPromotions = (product, newIdsNotInPromotion) => {
+  const checkPromotions = (product, newIdsNotInPromotion, total) => {
     for (const prom of promotions) {
       if (prom.productos_promocion.some(item => item.producto.id === product.id)) { //si el producto agregado es parte de la promocion
         let ok = true
@@ -45,7 +45,7 @@ const ListProducts = ({ user, promotions }) => {
           // se agrega promocion al carrito
           const newPromotionList = cart.promotionList
           newPromotionList.push(prom)
-          setCart({...cart, idsNotInPromotion: newIdsNotInPromotion, promotionList: newPromotionList})
+          setCart({...cart, idsNotInPromotion: newIdsNotInPromotion, promotionList: newPromotionList, total:total})
         }
       }
     }
@@ -81,7 +81,7 @@ const ListProducts = ({ user, promotions }) => {
     }
     const cartTotal = cart.total + product.precio_actual;
     setCart({ ...cart, productList: newProductList, idsNotInPromotion: newIdsNotInPromotion , total: cartTotal });
-    checkPromotions(product, newIdsNotInPromotion)
+    checkPromotions(product, newIdsNotInPromotion, cartTotal )
     console.log("despues: ", cart);
   };
 
