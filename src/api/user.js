@@ -1,6 +1,12 @@
 import { BASE_PATH } from "../utils/constants";
 import { authFetch } from "../utils/fetch";
 
+/**
+ * Conexion entre front end y back end para loguear al usuario
+ * @param {FormData} formData Formulario de loguin de usuario
+ *
+ */
+
 export async function loginApi(formData) {
   try {
     const url = `${BASE_PATH}/auth/local`;
