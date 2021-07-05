@@ -7,11 +7,21 @@ import { clearCart } from "../../components/ListCart/ListCart"
 import ListCart from '../../components/ListCart';
 import { useHistory } from "react-router-dom";
 
+/**
+ * Limpia el carrito y redirige a /pos
+ * @function
+ * @param {*} setCart setter de carrito
+ * @param {*} history "useHistory"
+ */
 const newSale = async (setCart, history) => {
   await clearCart(setCart)
   history.push("/pos")
 }
 
+/**
+ * Componente Voucher, muestra un resumen del carrito
+ * @returns Carrito y botón 'Nuevo Compra"
+ */
 const Voucher = () => {
   const [cart, setCart] = useContext(CartContext)
   const history = useHistory()

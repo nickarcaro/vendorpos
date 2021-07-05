@@ -4,6 +4,7 @@ import { CartContext } from "../../context/CartContext";
 
 /**
  * Limpia el carrito
+ * @function
  * @param {function} setCart funcion setter de carrito
  */
 export const clearCart = (setCart) => {
@@ -21,7 +22,9 @@ export const clearCart = (setCart) => {
 
 /**
  * Calcula el nuevo precio luego de aplicar una promocion
+ * @function
  * @param {JSON} promotion JSON de promocion obtenido del back-end
+ * @returns Nuevo valor despues de promocion
  */
 export const getPromotionDiscount = (promotion) => {
   let totalOriginal = 0
@@ -33,6 +36,7 @@ export const getPromotionDiscount = (promotion) => {
 
 /**
  * Calcula el total final de la venta considerando todas las promociones.
+ * @function
  * @param {Cart} cart 
  * @returns {number} Valor final de venta
  */
@@ -43,7 +47,10 @@ export const getTotal = (cart) => {
   }
   return total
 }
-
+/**
+ * Componente que muestra el carrito
+ * @returns Renderizado de Carrito
+ */
 const ListCart = () => {
   const [cart, setCart] = useContext(CartContext);
 

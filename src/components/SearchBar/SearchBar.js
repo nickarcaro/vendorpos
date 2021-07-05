@@ -4,6 +4,12 @@ const { Search } = Input;
 
 const onSearch = (value) => console.log(value);
 
+/**
+ * Componente barra de busqueda
+ * @param {object} props 
+ * @param {function} props.setFilterText setter de filterText
+ * @returns Renderizado barra de busqueda
+ */
 const SearchBar = ({setFilterText}) => {
 
   // const onChange = e => console.log(e.target.value)

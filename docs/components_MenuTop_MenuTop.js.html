@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: context/CartContext.js</title>
+    <title>JSDoc: Source: components/MenuTop/MenuTop.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: context/CartContext.js</h1>
+    <h1 class="page-title">Source: components/MenuTop/MenuTop.js</h1>
 
     
 
@@ -26,51 +26,47 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useState, createContext, useEffect} from 'react'
+            <pre class="prettyprint source linenums"><code>import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { Menu } from "antd";
 
-export const CartContext = createContext();
-
-export const CartProvider = (props) => {
-
-  /**
-   * Objeto del carrito
-   * @typedef {Object} Cart
-   * @property {ProductObject[]} productList - Lista de productos en carrito
-   * @property {JSON[]} promotionList - Lista de promociones recibidas del back-end
-   * @property {number[]} idsNotInPromotion - Lista de ids de productos que no forman parte de una promocion asignada. Entradas con repeticion (si hay 3 del mismo producto, su id estara 3 veces en el arreglo)
-   * @property {number} total - Monto total en carrito
-   * @property {number} discount - Valor de descuento
-   * @property {string} payment - Medio de pago seleccionado
-   */
-
-  const [cart, setCart] = useState(
-    {
-      productList: [],
-      promotionList: [],
-      idsNotInPromotion: [],
-      total: 0,
-      discount: 0,
-      payment: ""
-    }
-  )
-  useEffect(() => {
-    const data = localStorage.getItem("POS-Almacenes-Cart")
-    if (data) {
-      setCart(JSON.parse(data))
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem("POS-Almacenes-Cart", JSON.stringify(cart))
-  },[cart]);
-
+/**
+ * Componente menú vertical
+ */
+const MenuTop = () => {
+  const { logout } = useAuth();
   return (
-    &lt;CartContext.Provider value={[cart, setCart]}>
-      {props.children}
-    &lt;/CartContext.Provider>
-  )
-}
+    &lt;Menu theme="dark" mode="horizontal">
+      &lt;Menu.Item key="/">
+        &lt;Link to="/">
+          &lt;div
+            style={{
+              width: "120px",
+              height: "31px",
 
+              align: "center",
+            }}
+          >
+            &lt;h3 style={{ color: "#fff" }}> Punto de Venta&lt;/h3>
+          &lt;/div>
+        &lt;/Link>
+      &lt;/Menu.Item>
+      &lt;Menu.Item key="/pos/cuenta">
+        &lt;Link to={"/pos/cuenta"}>Mi Cuenta&lt;/Link>
+      &lt;/Menu.Item>
+
+      &lt;Menu.Item key="/pos/ventas">
+        &lt;Link to={"/pos/ventas"}>Ventas&lt;/Link>
+      &lt;/Menu.Item>
+
+      &lt;Menu.Item key="logout" onClick={logout}>
+        salir
+      &lt;/Menu.Item>
+    &lt;/Menu>
+  );
+};
+
+export default MenuTop;
 </code></pre>
         </article>
     </section>

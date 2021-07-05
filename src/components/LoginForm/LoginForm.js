@@ -5,7 +5,10 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import useAuth from "../../hooks/useAuth";
 import { loginApi } from "../../api/user";
-
+/**
+ * Componente login de usuario
+ * @returns Renderizadoo LoginForm
+ */
 const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();

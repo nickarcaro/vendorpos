@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: context/CartContext.js</title>
+    <title>JSDoc: Source: components/SearchBar/SearchBar.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: context/CartContext.js</h1>
+    <h1 class="page-title">Source: components/SearchBar/SearchBar.js</h1>
 
     
 
@@ -26,51 +26,36 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React, { useState, createContext, useEffect} from 'react'
+            <pre class="prettyprint source linenums"><code>import { Input } from "antd";
 
-export const CartContext = createContext();
+const { Search } = Input;
 
-export const CartProvider = (props) => {
+const onSearch = (value) => console.log(value);
 
-  /**
-   * Objeto del carrito
-   * @typedef {Object} Cart
-   * @property {ProductObject[]} productList - Lista de productos en carrito
-   * @property {JSON[]} promotionList - Lista de promociones recibidas del back-end
-   * @property {number[]} idsNotInPromotion - Lista de ids de productos que no forman parte de una promocion asignada. Entradas con repeticion (si hay 3 del mismo producto, su id estara 3 veces en el arreglo)
-   * @property {number} total - Monto total en carrito
-   * @property {number} discount - Valor de descuento
-   * @property {string} payment - Medio de pago seleccionado
-   */
+/**
+ * Componente barra de busqueda
+ * @param {object} props 
+ * @param {function} props.setFilterText setter de filterText
+ * @returns Renderizado barra de busqueda
+ */
+const SearchBar = ({setFilterText}) => {
 
-  const [cart, setCart] = useState(
-    {
-      productList: [],
-      promotionList: [],
-      idsNotInPromotion: [],
-      total: 0,
-      discount: 0,
-      payment: ""
-    }
-  )
-  useEffect(() => {
-    const data = localStorage.getItem("POS-Almacenes-Cart")
-    if (data) {
-      setCart(JSON.parse(data))
-    }
-  }, [])
-
-  useEffect(() => {
-    localStorage.setItem("POS-Almacenes-Cart", JSON.stringify(cart))
-  },[cart]);
+  // const onChange = e => console.log(e.target.value)
+  const onChange = e => setFilterText(e.target.value)
 
   return (
-    &lt;CartContext.Provider value={[cart, setCart]}>
-      {props.children}
-    &lt;/CartContext.Provider>
-  )
-}
+    &lt;>
+      &lt;Search
+        placeholder="Buscar Productos"
+        onSearch={onSearch}
+        onChange={onChange}
+        style={{ width: 200 }}
+      />
+    &lt;/>
+  );
+};
 
+export default SearchBar;
 </code></pre>
         </article>
     </section>
