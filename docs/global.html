@@ -98,13 +98,13 @@
 
         
             
-<h4 class="name" id="clearCart"><span class="type-signature">(constant) </span>clearCart<span class="type-signature"></span></h4>
+<h4 class="name" id="createSale"><span class="type-signature">(constant) </span>createSale<span class="type-signature"></span></h4>
 
 
 
 
 <div class="description">
-    <p>Limpia el carrito</p>
+    <p>Crea una venta en funcion de los productos y promociones en el carrito</p>
 </div>
 
 
@@ -142,131 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_ListCart_ListCart.js.html">components/ListCart/ListCart.js</a>, <a href="components_ListCart_ListCart.js.html#line9">line 9</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="getPromotionDiscount"><span class="type-signature">(constant) </span>getPromotionDiscount<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <p>Calcula el nuevo precio luego de aplicar una promocion</p>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_ListCart_ListCart.js.html">components/ListCart/ListCart.js</a>, <a href="components_ListCart_ListCart.js.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
-            
-<h4 class="name" id="getTotal"><span class="type-signature">(constant) </span>getTotal<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    <p>Calcula el total final de la venta considerando todas las promociones.</p>
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_ListCart_ListCart.js.html">components/ListCart/ListCart.js</a>, <a href="components_ListCart_ListCart.js.html#line39">line 39</a>
+        <a href="components_ConfirmSale_ConfirmSale.js.html">components/ConfirmSale/ConfirmSale.js</a>, <a href="components_ConfirmSale_ConfirmSale.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -294,7 +170,7 @@
     
 
     
-    <h4 class="name" id="getCategories"><span class="type-signature"></span>getCategories<span class="signature">(idAlmacen, logout)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="clearCart"><span class="type-signature"></span>clearCart<span class="signature">(setCart)</span><span class="type-signature"></span></h4>
     
 
     
@@ -302,7 +178,1516 @@
 
 
 <div class="description">
+    <p>Limpia el carrito</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>setCart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>funcion setter de carrito</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_ListCart_ListCart.js.html">components/ListCart/ListCart.js</a>, <a href="components_ListCart_ListCart.js.html#line10">line 10</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="ConfirmSale"><span class="type-signature"></span>ConfirmSale<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Componente que confirma la venta, crea su registro en el back-end y redirige a la pagina 'Voucher'</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>meansOfPay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Medio de pago</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>JSON de usuario obtenido del back-end</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_ConfirmSale_ConfirmSale.js.html">components/ConfirmSale/ConfirmSale.js</a>, <a href="components_ConfirmSale_ConfirmSale.js.html#line98">line 98</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Renderizado de boton 'Confirmar'</p>
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getPromotionDiscount"><span class="type-signature"></span>getPromotionDiscount<span class="signature">(promotion)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Calcula el nuevo precio luego de aplicar una promocion</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>promotion</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>JSON de promocion obtenido del back-end</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_ListCart_ListCart.js.html">components/ListCart/ListCart.js</a>, <a href="components_ListCart_ListCart.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Nuevo valor despues de promocion</p>
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getTotal"><span class="type-signature"></span>getTotal<span class="signature">(cart)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Calcula el total final de la venta considerando todas las promociones.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#Cart">Cart</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_ListCart_ListCart.js.html">components/ListCart/ListCart.js</a>, <a href="components_ListCart_ListCart.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Valor final de venta</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="ListCart"><span class="type-signature"></span>ListCart<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Componente que muestra el carrito</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_ListCart_ListCart.js.html">components/ListCart/ListCart.js</a>, <a href="components_ListCart_ListCart.js.html#line54">line 54</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Renderizado de Carrito</p>
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="ListProducts"><span class="type-signature"></span>ListProducts<span class="signature">(props)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Componente lista de productos</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>JSON usuario obtenido del back-end</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>promotions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;JSON></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Lista de promociones obtenidas desde el back-end</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_ListProducts_ListProducts.js.html">components/ListProducts/ListProducts.js</a>, <a href="components_ListProducts_ListProducts.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Renderización de lista de productos</p>
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="LoginForm"><span class="type-signature"></span>LoginForm<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Componente login de usuario</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_LoginForm_LoginForm.js.html">components/LoginForm/LoginForm.js</a>, <a href="components_LoginForm_LoginForm.js.html#line12">line 12</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Renderizadoo LoginForm</p>
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="MenuTop"><span class="type-signature"></span>MenuTop<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Componente menú vertical</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_MenuTop_MenuTop.js.html">components/MenuTop/MenuTop.js</a>, <a href="components_MenuTop_MenuTop.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="newSale"><span class="type-signature">(async) </span>newSale<span class="signature">(setCart, history)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Limpia el carrito y redirige a /pos</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>setCart</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>setter de carrito</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>history</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">*</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>&quot;useHistory&quot;</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_Seller_Voucher.js.html">pages/Seller/Voucher.js</a>, <a href="pages_Seller_Voucher.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Payment"><span class="type-signature"></span>Payment<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Componente de ventana para seleccionar medio de pago</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_Seller_Payment.js.html">pages/Seller/Payment.js</a>, <a href="pages_Seller_Payment.js.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Pos"><span class="type-signature"></span>Pos<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Pagina inicial de proceso de venta. Contiene lista de productos, carrito, filtros.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="pages_Seller_Pos.js.html">pages/Seller/Pos.js</a>, <a href="pages_Seller_Pos.js.html#line28">line 28</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+<<<<<<< HEAD
+    <h4 class="name" id="getCategories"><span class="type-signature"></span>getCategories<span class="signature">(idAlmacen, logout)</span><span class="type-signature"></span></h4>
+=======
+    <h4 class="name" id="SearchBar"><span class="type-signature"></span>SearchBar<span class="signature">(props)</span><span class="type-signature"></span></h4>
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
+    
+
+    
+
+
+
+<div class="description">
+<<<<<<< HEAD
     <p>Conexion entre front end y back end para obtener las categorias</p>
+=======
+    <p>Componente barra de busqueda</p>
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
 </div>
 
 
@@ -344,7 +1729,11 @@
             <td class="type">
             
                 
+<<<<<<< HEAD
 <span class="param-type">String</span>
+=======
+<span class="param-type">object</span>
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
 
 
             
@@ -508,6 +1897,7 @@
 
         <tr>
             
+<<<<<<< HEAD
                 <td class="name"><code>idAlmacen</code></td>
             
 
@@ -515,23 +1905,8 @@
             
                 
 <span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>ID del almacen</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>logout</code></td>
+=======
+                <td class="name"><code>setFilterText</code></td>
             
 
             <td class="type">
@@ -547,7 +1922,14 @@
 
             
 
-            <td class="description last"><p>Funcion para cerrar sesion</p></td>
+            <td class="description last"><p>setter de filterText</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -588,7 +1970,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="api_products.js.html">api/products.js</a>, <a href="api_products.js.html#line23">line 23</a>
+        <a href="components_SearchBar_SearchBar.js.html">components/SearchBar/SearchBar.js</a>, <a href="components_SearchBar_SearchBar.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -617,7 +1999,136 @@
 
         
 <div class="param-desc">
+    <p>Renderizado barra de busqueda</p>
+</div>
+
+
+
+    
+
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
+
+
+
+
+        
+            
+
+<<<<<<< HEAD
+            <td class="description last"><p>ID del almacen</p></td>
+        </tr>
+=======
+    
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
+
+    
+    <h4 class="name" id="SelectStore"><span class="type-signature"></span>SelectStore<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+<<<<<<< HEAD
+        <tr>
+            
+                <td class="name"><code>logout</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+=======
+    
+
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
+
+
+<div class="description">
+    <p>Componente que solicita al usuario tipo administrador elegir un almacén</p>
+</div>
+
+
+
+
+<<<<<<< HEAD
+            <td class="description last"><p>Funcion para cerrar sesion</p></td>
+        </tr>
+=======
+
+
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+<<<<<<< HEAD
+        <a href="api_products.js.html">api/products.js</a>, <a href="api_products.js.html#line23">line 23</a>
+=======
+        <a href="pages_SelectStore.js.html">pages/SelectStore.js</a>, <a href="pages_SelectStore.js.html#line14">line 14</a>
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+<<<<<<< HEAD
     <p>Lista de productos</p>
+=======
+    <p>Lista de almacenes de usuario</p>
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
 </div>
 
 
@@ -634,7 +2145,11 @@
     
 
     
+<<<<<<< HEAD
     <h4 class="name" id="getPromotions"><span class="type-signature"></span>getPromotions<span class="signature">(idAlmacen, logout)</span><span class="type-signature"></span></h4>
+=======
+    <h4 class="name" id="Voucher"><span class="type-signature"></span>Voucher<span class="signature">()</span><span class="type-signature"></span></h4>
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
     
 
     
@@ -642,7 +2157,11 @@
 
 
 <div class="description">
+<<<<<<< HEAD
     <p>Conexion entre front end y back end para obtener las promociones</p>
+=======
+    <p>Componente Voucher, muestra un resumen del carrito</p>
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
 </div>
 
 
@@ -758,6 +2277,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
+<<<<<<< HEAD
         <a href="api_promotions.js.html">api/promotions.js</a>, <a href="api_promotions.js.html#line11">line 11</a>
     </li></ul></dd>
     
@@ -1647,6 +3167,9 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="api_products.js.html">api/products.js</a>, <a href="api_products.js.html#line42">line 42</a>
+=======
+        <a href="pages_Seller_Voucher.js.html">pages/Seller/Voucher.js</a>, <a href="pages_Seller_Voucher.js.html#line25">line 25</a>
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
     </li></ul></dd>
     
 
@@ -1671,6 +3194,16 @@
 
 
 
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>Carrito y botón 'Nuevo Compra&quot;</p>
+</div>
+
+
+
+    
 
 
 
@@ -2161,6 +3694,222 @@
 
 
             
+                
+<h4 class="name" id="Sale">Sale</h4>
+
+
+
+
+<div class="description">
+    <p>Objeto venta.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>almacen</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSON</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>JSON almacen de back-end</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>total</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Total de venta</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>promocions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;JSON></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Lista de promociones</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>medio_pago</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>medio de pago</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>fecha</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>fecha de venta en formato string</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_ConfirmSale_ConfirmSale.js.html">components/ConfirmSale/ConfirmSale.js</a>, <a href="components_ConfirmSale_ConfirmSale.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+            
     
 
     
@@ -2174,13 +3923,21 @@
 </div>
 
 <nav>
+<<<<<<< HEAD
     <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearCart">clearCart</a></li><li><a href="global.html#getCategories">getCategories</a></li><li><a href="global.html#getProducts">getProducts</a></li><li><a href="global.html#getPromotionDiscount">getPromotionDiscount</a></li><li><a href="global.html#getPromotions">getPromotions</a></li><li><a href="global.html#getTotal">getTotal</a></li><li><a href="global.html#ListProducts">ListProducts</a></li><li><a href="global.html#Pos">Pos</a></li><li><a href="global.html#postSale">postSale</a></li><li><a href="global.html#postSaleDetail">postSaleDetail</a></li><li><a href="global.html#postStockOut">postStockOut</a></li><li><a href="global.html#putProduct">putProduct</a></li></ul>
+=======
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearCart">clearCart</a></li><li><a href="global.html#ConfirmSale">ConfirmSale</a></li><li><a href="global.html#createSale">createSale</a></li><li><a href="global.html#getPromotionDiscount">getPromotionDiscount</a></li><li><a href="global.html#getTotal">getTotal</a></li><li><a href="global.html#ListCart">ListCart</a></li><li><a href="global.html#ListProducts">ListProducts</a></li><li><a href="global.html#LoginForm">LoginForm</a></li><li><a href="global.html#MenuTop">MenuTop</a></li><li><a href="global.html#newSale">newSale</a></li><li><a href="global.html#Payment">Payment</a></li><li><a href="global.html#Pos">Pos</a></li><li><a href="global.html#SearchBar">SearchBar</a></li><li><a href="global.html#SelectStore">SelectStore</a></li><li><a href="global.html#Voucher">Voucher</a></li></ul>
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
 </nav>
 
 <br class="clear">
 
 <footer>
+<<<<<<< HEAD
     Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jul 05 2021 17:38:36 GMT-0400 (hora estándar de Chile)
+=======
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jul 05 2021 17:43:36 GMT-0400 (Chile Standard Time)
+>>>>>>> 35057448517f231263dcf00fd0abffe2f7644d61
 </footer>
 
 <script> prettyPrint(); </script>

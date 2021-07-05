@@ -7,7 +7,10 @@ import { StoreContext } from '../context/StoreContext'
 import { useHistory } from "react-router-dom";
 
 
-
+/**
+ * Componente que solicita al usuario tipo administrador elegir un almacén
+ * @returns Lista de almacenes de usuario
+ */
 const SelectStore = () => {
   const [user, setUser] = useContext(StoreContext)
   const { auth, logout } = useAuth();
