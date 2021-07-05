@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: api/promotions.js</title>
+    <title>JSDoc: Source: api/token.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: api/promotions.js</h1>
+    <h1 class="page-title">Source: api/token.js</h1>
 
     
 
@@ -26,27 +26,55 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { BASE_PATH } from "../utils/constants";
-import { authFetch } from "../utils/fetch";
+            <pre class="prettyprint source linenums"><code>import { TOKEN } from "../utils/constants";
+import jwtDecode from "jwt-decode";
 
 /**
- * Conexion entre front end y back end para obtener las promociones
- * @param {String} idAlmacen ID del almacen
- * @param {Function} logout Funcion para cerrar sesion
- * @returns Lista de promociones
+ * Conexion entre front end y back end para setear token en localstorage
+ *
+ */
+//setear token em localstorage
+export function setToken(token) {
+  localStorage.setItem(TOKEN, token);
+}
+
+
+/**
+ * Conexion entre front end y back end para obtener token de usuario
+ *
  */
 
-export async function getPromotions(idAlmacen, logout) {
-  try {
-    const url = `${BASE_PATH}/promocions?almacen=${idAlmacen}`;
-    const result = await authFetch(url, null, logout);
-    if (result.statusCode === 500) throw Error("Error del servidor");
-    return result;
-  } catch (error) {
-    console.log(error);
-    return null;
+//obtener token de usuario
+export function getToken() {
+  return localStorage.getItem(TOKEN);
+}
+
+/**
+ * Conexion entre front end y back end para eliminar token
+ *
+ */
+
+//eliminar token
+export function removeToken() {
+  localStorage.removeItem(TOKEN);
+}
+
+/**
+ * Conexion entre front end y back end para renovar token
+ *
+ */
+
+//renovar token
+export function hasExpiredToken(token) {
+  const tokenDecode = jwtDecode(token);
+  const expireDate = tokenDecode.exp * 1000;
+  const currentDate = new Date().getTime();
+  if (currentDate > expireDate) {
+    return true;
   }
-}</code></pre>
+  return false;
+}
+</code></pre>
         </article>
     </section>
 

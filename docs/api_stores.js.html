@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: api/promotions.js</title>
+    <title>JSDoc: Source: api/stores.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: api/promotions.js</h1>
+    <h1 class="page-title">Source: api/stores.js</h1>
 
     
 
@@ -30,18 +30,38 @@
 import { authFetch } from "../utils/fetch";
 
 /**
- * Conexion entre front end y back end para obtener las promociones
- * @param {String} idAlmacen ID del almacen
- * @param {Function} logout Funcion para cerrar sesion
- * @returns Lista de promociones
+ * Conexion entre front end y back end para agregar un nuevo detalle de venta
+ * @param {String} userId ID del usuario
+ * @param {Function} logout Funcion para cerrar sesion 
+ * @returns Lista de tiendas 
  */
 
-export async function getPromotions(idAlmacen, logout) {
+export async function getStores(userId, logout) {
   try {
-    const url = `${BASE_PATH}/promocions?almacen=${idAlmacen}`;
+    const url = `${BASE_PATH}/almacenes?user=${userId}`;
     const result = await authFetch(url, null, logout);
     if (result.statusCode === 500) throw Error("Error del servidor");
     return result;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+
+
+export async function putUserStore(idUser, data, logout) {
+  try {
+    const url = `${BASE_PATH}/users/${idUser}`;
+    const params = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const result = await authFetch(url, params, logout);
+    return result ? result : null;
   } catch (error) {
     console.log(error);
     return null;
