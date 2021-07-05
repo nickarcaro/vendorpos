@@ -1,6 +1,12 @@
 import { BASE_PATH } from "../utils/constants";
 //import { authFetch } from "../utils/fetch";
 
+/**
+ * Conexion entre front end y back end para agregar una nueva venta
+ * @param {Objeto} data Objeto de venta
+ * 
+ */
+
 export async function postSale(data) {
   try {
     const url = `${BASE_PATH}/ventas`;
@@ -19,6 +25,12 @@ export async function postSale(data) {
     return null;
   }
 }
+
+/**
+ * Conexion entre front end y back end para agregar un nuevo detalle de venta
+ * @param {Objeto} data Objeto de detalle de venta 
+ *
+ */
 
 export async function postSaleDetail(data) {
   try {

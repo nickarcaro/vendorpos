@@ -1,6 +1,13 @@
 import { BASE_PATH } from "../utils/constants";
 import { authFetch } from "../utils/fetch";
 
+/**
+ * Conexion entre front end y back end para agregar un nuevo detalle de venta
+ * @param {String} userId ID del usuario
+ * @param {Function} logout Funcion para cerrar sesion 
+ * @returns Lista de tiendas 
+ */
+
 export async function getStores(userId, logout) {
   try {
     const url = `${BASE_PATH}/almacenes?user=${userId}`;
@@ -12,6 +19,8 @@ export async function getStores(userId, logout) {
     return null;
   }
 }
+
+
 
 export async function putUserStore(idUser, data, logout) {
   try {

@@ -1,6 +1,13 @@
 import { BASE_PATH } from "../utils/constants";
 import { authFetch } from "../utils/fetch";
 
+/**
+ * Conexion entre front end y back end para obtener las promociones
+ * @param {String} idAlmacen ID del almacen
+ * @param {Function} logout Funcion para cerrar sesion
+ * @returns Lista de promociones
+ */
+
 export async function getPromotions(idAlmacen, logout) {
   try {
     const url = `${BASE_PATH}/promocions?almacen=${idAlmacen}`;

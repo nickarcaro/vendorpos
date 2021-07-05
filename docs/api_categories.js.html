@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: api/categories.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,41 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: api/categories.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { BASE_PATH } from "../utils/constants";
+import { authFetch } from "../utils/fetch";
 
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
+/**
+ * Conexion entre front end y back end para obtener las categorias
+ * @param {String} idAlmacen ID del almacen
+ * @param {Function} logout Funcion para cerrar sesion
+ * @returns Lista de categorias
+ */
 
 
 
-
-
+export async function getCategories(idAlmacen, logout) {
+  try {
+    const url = `${BASE_PATH}/categoria-simples?almacen=${idAlmacen}`;
+    const result = await authFetch(url, null, logout);
+    if (result.statusCode === 500) throw Error("Error del servidor");
+    return result;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+</code></pre>
+        </article>
+    </section>
 
 
 

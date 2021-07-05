@@ -13,6 +13,13 @@ export async function getProducts() {
 }
 */
 
+/**
+ * Conexion entre front end y back end para obtener productos
+ * @param {String} idAlmacen ID del almacen
+ * @param {Function} logout Funcion para cerrar sesion 
+ * @returns Lista de productos
+ */
+
 export async function getProducts(idAlmacen, logout) {
   try {
     const url = `${BASE_PATH}/productos?almacen=${idAlmacen}`;
@@ -24,6 +31,13 @@ export async function getProducts(idAlmacen, logout) {
     return null;
   }
 }
+
+/**
+ * Conexion entre front end y back end para actualizar Stock
+ * @param {String} id ID del producto
+ * @param {Array} data Reduccion del stock
+ *
+ */
 
 export async function putProduct(id, data) {
   try {
@@ -43,6 +57,12 @@ export async function putProduct(id, data) {
     return null;
   }
 }
+
+/**
+ * Conexion entre front end y back end para reducir Stock
+ * @param {Object} data Objeto salida de stock
+ *  
+ */
 
 export async function postStockOut(data) {
   try {
