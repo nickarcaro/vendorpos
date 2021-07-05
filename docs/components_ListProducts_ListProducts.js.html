@@ -1,4 +1,32 @@
-import React, { useState, useEffect, useContext } from "react";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/ListProducts/ListProducts.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/ListProducts/ListProducts.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect, useContext } from "react";
 import { List, Card, Row, Col, Space } from "antd";
 import { getProducts } from "../../api/products";
 import { getCategories } from "../../api/categories";
@@ -63,11 +91,11 @@ const ListProducts = ({ user, promotions }) => {
           for (const productId of newIdsNotInPromotion) {
             if (promProd.producto.id === productId) counter += 1
           }
-          if (counter < targetAmount) ok = false
+          if (counter &lt; targetAmount) ok = false
         }
         if (ok) { //existen suficientes productos en el carro para agregar la promocion
           for (const promProd of prom.productos_promocion) { // se sacan de idsNotInPromotion las ids de estos productos
-            for (let i = 0; i < promProd.cantidad; i++) {
+            for (let i = 0; i &lt; promProd.cantidad; i++) {
               let index = newIdsNotInPromotion.indexOf(promProd.producto.id)
               console.log('index: ', index)
               newIdsNotInPromotion.splice(index, 1) //quita elemento de arreglo
@@ -133,12 +161,12 @@ const ListProducts = ({ user, promotions }) => {
   )
 
   return (
-    <>
+    &lt;>
 
-          {/* <Row gutter={[16, 16]}>
-            <Col span={8}><SearchBar setFilterText={setFilterText}></SearchBar>  <button  onClick={() => (setProducts(products2))} > Todos los productos</button> </Col>
-            <Col span={16}>  
-              <List
+          {/* &lt;Row gutter={[16, 16]}>
+            &lt;Col span={8}>&lt;SearchBar setFilterText={setFilterText}>&lt;/SearchBar>  &lt;button  onClick={() => (setProducts(products2))} > Todos los productos&lt;/button> &lt;/Col>
+            &lt;Col span={16}>  
+              &lt;List
                 grid={{
                   gutter: 16,
                 }}
@@ -146,36 +174,36 @@ const ListProducts = ({ user, promotions }) => {
                 
                 renderItem={item => (
                 
-                  <List.Item> 
-                    <button  onClick={() => (setProducts(item.productos))} >{item.nombre}</button>
-                  </List.Item>
+                  &lt;List.Item> 
+                    &lt;button  onClick={() => (setProducts(item.productos))} >{item.nombre}&lt;/button>
+                  &lt;/List.Item>
                 )}  
               />
-            </Col>    
-          </Row> */}
+            &lt;/Col>    
+          &lt;/Row> */}
           
           
-            <SearchBar setFilterText={setFilterText}></SearchBar>
-            <Space direction='horizontal' size='small'>
-              <button  onClick={() => (setProducts(products2))} > Todos </button>
-              <List
+            &lt;SearchBar setFilterText={setFilterText}>&lt;/SearchBar>
+            &lt;Space direction='horizontal' size='small'>
+              &lt;button  onClick={() => (setProducts(products2))} > Todos &lt;/button>
+              &lt;List
                   grid={{
                     gutter: 4,
                   }}
                   dataSource={categories}  
                   renderItem={item => ( 
-                    <List.Item> 
-                      <button  onClick={() => (setProducts(item.productos))} >{item.nombre}</button>
-                    </List.Item>
+                    &lt;List.Item> 
+                      &lt;button  onClick={() => (setProducts(item.productos))} >{item.nombre}&lt;/button>
+                    &lt;/List.Item>
                   )}  
                 />
-            </Space>
+            &lt;/Space>
           
 
        
          
 
-      <List
+      &lt;List
         grid={{
           gutter: 16,
           xs: 1,
@@ -187,20 +215,43 @@ const ListProducts = ({ user, promotions }) => {
         }} // cantidad de calumnas por tamaño de pantalla
         dataSource={filteredProducts}
         renderItem={(product) => (
-          <List.Item>
-            <Card onClick={() => clickProduct(product)} title={product.nombre}>
+          &lt;List.Item>
+            &lt;Card onClick={() => clickProduct(product)} title={product.nombre}>
               ${product.precio_actual}, {product.stock_actual} unidades en stock
-            </Card>
-          </List.Item>
+            &lt;/Card>
+          &lt;/List.Item>
         )}
       />
-    </>
-    // <Card title="Default size card" style={{ width: 300 }}>
-    //   <p>Card content</p>
-    //   <p>Card content</p>
-    //   <p>Card content</p>
-    // </Card>
+    &lt;/>
+    // &lt;Card title="Default size card" style={{ width: 300 }}>
+    //   &lt;p>Card content&lt;/p>
+    //   &lt;p>Card content&lt;/p>
+    //   &lt;p>Card content&lt;/p>
+    // &lt;/Card>
   );
 };
 
 export default ListProducts;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clearCart">clearCart</a></li><li><a href="global.html#getPromotionDiscount">getPromotionDiscount</a></li><li><a href="global.html#getTotal">getTotal</a></li><li><a href="global.html#ListProducts">ListProducts</a></li><li><a href="global.html#Pos">Pos</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jul 05 2021 16:55:51 GMT-0400 (Chile Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

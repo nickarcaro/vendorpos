@@ -2,6 +2,10 @@ import React, { useContext } from "react";
 import { List, Divider, Row, Col } from "antd";
 import { CartContext } from "../../context/CartContext";
 
+/**
+ * Limpia el carrito
+ * @param {function} setCart funcion setter de carrito
+ */
 export const clearCart = (setCart) => {
   console.log("clearCart.. ");
   let cleanCart = {
@@ -15,6 +19,10 @@ export const clearCart = (setCart) => {
   setCart({ ...cleanCart });
 };
 
+/**
+ * Calcula el nuevo precio luego de aplicar una promocion
+ * @param {JSON} promotion JSON de promocion obtenido del back-end
+ */
 export const getPromotionDiscount = (promotion) => {
   let totalOriginal = 0
   for (const prodProm of promotion.productos_promocion){
@@ -23,6 +31,11 @@ export const getPromotionDiscount = (promotion) => {
   return totalOriginal - promotion.precio_promocion
 }
 
+/**
+ * Calcula el total final de la venta considerando todas las promociones.
+ * @param {Cart} cart 
+ * @returns {number} Valor final de venta
+ */
 export const getTotal = (cart) => {
   let total = cart.total
   for (const prom of cart.promotionList) {
